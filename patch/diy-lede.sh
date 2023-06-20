@@ -1,8 +1,8 @@
 #!/bin/sh
 
 #修改feeds.conf.default,在telephony字段行后一行添加SSR
-sed -i '/telephony/a src-git helloworld https://github.com/fw876/helloworld.git' openwrt/feeds.conf.default
-#sed -i '/^#.*helloworld/s/^#//' openwrt/feeds.conf.default
+#sed -i '/telephony/a src-git helloworld https://github.com/fw876/helloworld.git' openwrt/feeds.conf.default
+sed -i '/^#.*helloworld/s/^#//' openwrt/feeds.conf.default
 #修改feeds.conf.default,在helloworld字段行后一行添加我的库package
 sed -i '/helloworld/a src-git package https://github.com/kjrzxu/package.git' openwrt/feeds.conf.default
 
