@@ -1,3 +1,4 @@
+#添加默认插件（已取消，已通过config文件实现）
 	ipv6helper automount autosamba ddns-scripts_cloudflare.com-v4 xupnpd \
 	luci-theme-argonne luci-app-argon-config luci-app-advanced luci-app-control-speedlimit \
 	luci-app-fileassistant luci-app-iptvhelper luci-app-omcproxy luci-app-udpxy \
