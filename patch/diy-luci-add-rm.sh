@@ -5,10 +5,10 @@
 #cp files/update_cloudflare_com_v4.sh openwrt/feeds/packages/net/ddns-scripts/files
 
 # 替换原argon主题和argon-config主题设置
-#rm -rf openwrt/feeds/luci/themes/luci-theme-argon
-#rm -rf openwrt/feeds/luci/applications/luci-app-argon-config
-#cp -r files/luci-theme-argon openwrt/feeds/luci/themes
-#cp -r files/luci-app-argon-config openwrt/feeds/luci/applications
+rm -rf openwrt/feeds/luci/themes/luci-theme-argon
+rm -rf openwrt/feeds/luci/applications/luci-app-argon-config
+cp -r files/luci-theme-argon openwrt/feeds/luci/themes
+cp -r files/luci-app-argon-config openwrt/feeds/luci/applications
 
 # 替换默认主题bootstrap为argon主题
 #sed -i 's/bootstrap/argon/ig' openwrt/feeds/luci/collections/luci/Makefile
