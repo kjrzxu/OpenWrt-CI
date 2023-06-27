@@ -73,4 +73,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt_LEDE_dsa
-          path: openwrt/bin/targets
+          path: openwrt/bin
