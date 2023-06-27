@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # 替换update_cloudflare_com_v4.sh
-#rm -rf openwrt/feeds/packages/net/ddns-scripts/files/update_cloudflare_com_v4.sh
-#cp files/update_cloudflare_com_v4.sh openwrt/feeds/packages/net/ddns-scripts/files
+rm -rf openwrt/feeds/packages/net/ddns-scripts/files/update_cloudflare_com_v4.sh
+cp files/update_cloudflare_com_v4.sh openwrt/feeds/packages/net/ddns-scripts/files
 
 # 替换原argon主题和argon-config主题设置
 rm -rf openwrt/feeds/luci/themes/luci-theme-argon
