@@ -13,12 +13,12 @@ cp -r files/luci-app-argon-config openwrt/feeds/luci/applications
 rm -rf openwrt/feeds/packages/net/ddns-scripts/files/update_cloudflare_com_v4.sh
 cp files/update_cloudflare_com_v4.sh openwrt/feeds/packages/net/ddns-scripts/files
 
-#替换原cloudflared
+#修改cloudflared
 #sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
-#sed -i '/init.d/d' openwrt/feeds/packages/net/cloudflared/Makefile
-#rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
-rm -rf openwrt/feeds/packages/net/cloudflared
-cp -r files/cloudflared openwrt/feeds/packages/net
+sed -i '/init.d/d' openwrt/feeds/packages/net/cloudflared/Makefile
+rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
+#rm -rf openwrt/feeds/packages/net/cloudflared
+#cp -r files/cloudflared openwrt/feeds/packages/net
 
 #替换automount自动共享设置文件
 rm -rf openwrt/package/lean/automount/files/15-automount
