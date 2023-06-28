@@ -25,6 +25,8 @@ sed -i 's/_("ShadowSocksR Plus+"/_("科学上网"/' openwrt/feeds/helloworld/luc
 #sed -i '101s/x86_64/x86_64||mipsel/' openwrt/feeds/helloworld/luci-app-ssr-plus/Makefile
 #sed -i '161s/n/y/' openwrt/feeds/helloworld/luci-app-ssr-plus/Makefile
 
+sed -i 's/_("OpenClash"/_("Clash"/' openwrt/feeds/clash/luci-app-openclash/luasrc/controller/openclash.lua
+
 sed -i 's/_("Internet Access Schedule Control"/_("时间控制"/' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
 sed -i 's/"services"/"control"/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
 sed -i 's/services/control/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/view/mia/mia_status.htm
