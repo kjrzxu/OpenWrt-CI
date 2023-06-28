@@ -28,6 +28,6 @@ sed -i 's/10/5/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 sed -i 's/0/1/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 
 #sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
-sed -i '/init/d' openwrt/feeds/packages/net/cloudflared/Makefile
+sed -i '/init.d/d' openwrt/feeds/packages/net/cloudflared/Makefile
 rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
 
