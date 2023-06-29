@@ -12,7 +12,7 @@ name: compile LEDE_dsa
 on:
   push:
     branches: 
-      - main
+      - master
   #定时自动编译
   #schedule:
   #  - cron: 0 0 1 * *
