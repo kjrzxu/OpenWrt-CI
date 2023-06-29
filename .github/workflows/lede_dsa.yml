@@ -72,8 +72,9 @@ jobs:
       - name: 编译固件
         run: |
           cd openwrt
-          echo -e "$(nproc) thread ../files."
-          make -j$(($(nproc) + 1)) V=s
+          make -j1 V=s
+          #echo -e "$(nproc) thread ../files."
+          #make -j$(($(nproc) + 1)) V=s
       - name : 上传bin文件夹(固件+ipk)到 github actions
         uses: actions/upload-artifact@master
         with:
