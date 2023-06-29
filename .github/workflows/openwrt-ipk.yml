@@ -63,8 +63,9 @@ jobs:
           EOF
           # 常用插件
           cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-app-clash=y
+          CONFIG_PACKAGE_luci-app-clash=m
           EOF
+          make defconfig
       - name: 下载软件包
         run: |
           cd openwrt
