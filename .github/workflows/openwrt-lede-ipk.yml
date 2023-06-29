@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 
-name: compile LEDE_dsa
+name: compile LEDE_ipk
 
 on:
   push:
