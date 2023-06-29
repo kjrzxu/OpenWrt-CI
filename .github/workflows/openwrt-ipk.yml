@@ -27,8 +27,6 @@ jobs:
     steps:
       - name: 准备工作
         uses: actions/checkout@master
-#        with:
-#          fetch-depth: 0
 
       - name: 部署编译环境
         run: |
