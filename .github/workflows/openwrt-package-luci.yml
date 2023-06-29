@@ -7,16 +7,19 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 
-name: compile OpenWrt_package_luci
+name: compile LEDE_dsa
 
 on:
   push:
     branches: 
-      - master
+      - main
+  #定时自动编译
   #schedule:
   #  - cron: 0 0 1 * *
+  #点击srarted触发开始
   #watch:
   #  types: started
+  #手动触发开始
   workflow_dispatch:
 
 jobs:
@@ -27,46 +30,55 @@ jobs:
     steps:
       - name: 准备工作
         uses: actions/checkout@master
+#        with:
+#          fetch-depth: 0
 
       - name: 部署编译环境
         run: |
           sudo apt update -y
           sudo apt full-upgrade -y
-          sudo apt install -y ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential \
+          sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
           bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
           git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
           libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \
-          mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils \
-          rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
-      - name: 下载源码
+          mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools \
+          libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \
+          vim wget xmlto xxd zlib1g-dev
+      - name: 下载lede源码
         run: git clone https://github.com/coolsnowwolf/lede openwrt
-      - name: 修改lede源码
-        run: chmod +x patch/diy-lede.sh && sh patch/diy-lede.sh
-      - name: 替换hnat配置文件
-        run: chmod +x patch/diy-hnat.sh && sh patch/diy-hnat.sh
+      - name: 下载插件源码
+        run: git clone https://github.com/kjrzxu/luci-app-clash openwrt/package
+      - name: 编译5.10内核
+        run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
       - name: 升级feeds
         run: cd openwrt && ./scripts/feeds update -a
       - name: 安装feeds
         run: cd openwrt && ./scripts/feeds install -a
-      - name: 修改luci源码
-        run: chmod +x patch/diy-luci.sh && sh patch/diy-luci.sh
-      - name: 生成config内核编译
+      - name: 配置config文件
         run: |
-          cd openwrt
-          cp ../.config .config
-          make defconfig
+          rm -f ./.config*
+          touch ./.config
+          # 机型设置:
+          cat >> .config <<EOF
+          CONFIG_TARGET_ramips=y
+          CONFIG_TARGET_ramips_mt7621=y
+          CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y
+          EOF
+          # 常用插件
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_luci-app-clash=y
+          EOF
       - name: 下载软件包
         run: |
           cd openwrt
           make download -j8
           find dl -size -1024c -exec rm -f {} \;
-      - name: 开始编译固件
+      - name: 编译插件
         run: |
           cd openwrt
-          echo -e "$(nproc) thread build."
-          make package/luci-app-cloudflared/compile V=99
-      - name : 上传bin文件夹(固件+ipk)到 github actions
+          make package/luci-app-clash/compile V=99
+      - name : 上传bin文件夹到 github actions
         uses: actions/upload-artifact@master
         with:
-          name: OpenWrt_LEDE_hnat
+          name: OpenWrt_ipk
           path: openwrt/bin
