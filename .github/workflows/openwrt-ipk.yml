@@ -53,7 +53,7 @@ jobs:
         run: cd openwrt && ./scripts/feeds install -a
       - name: 配置config文件
         run: |
-          rm -f ./.config*
+          cd openwrt
           touch ./.config
           # 机型设置:
           cat >> .config <<EOF
