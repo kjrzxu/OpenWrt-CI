@@ -12,7 +12,7 @@ name: compile LEDE_ipk
 on:
   push:
     branches: 
-      - master
+      - main
   #schedule:
   #  - cron: 0 0 1 * *
   #watch:
