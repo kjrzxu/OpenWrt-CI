@@ -43,12 +43,8 @@ jobs:
           vim wget xmlto xxd zlib1g-dev
       - name: 下载源码
         run: git clone https://github.com/coolsnowwolf/lede openwrt
-      - name: 写入插件到默认配置
-        run: |
-          cd openwrt
-          echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
-          echo "src-git package https://github.com/kjrzxu/package.git" >> ./feeds.conf.default
-          echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
+      - name: 修改lede源码
+        run: chmod +x patch/diy-lede.sh && sh patch/diy-lede.sh
       - name: 编译5.10内核
         run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
       - name: 升级feeds
