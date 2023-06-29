@@ -13,13 +13,10 @@ on:
   push:
     branches: 
       - master
-  #定时自动编译
   #schedule:
   #  - cron: 0 0 1 * *
-  #点击srarted触发开始
   #watch:
   #  types: started
-  #手动触发开始
   workflow_dispatch:
 
 jobs:
