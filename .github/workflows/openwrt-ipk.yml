@@ -44,7 +44,7 @@ jobs:
       - name: 下载lede源码
         run: git clone https://github.com/coolsnowwolf/lede openwrt
       - name: 下载插件源码
-        run: git clone https://github.com/kjrzxu/luci-app-clash openwrt/package
+        run: git clone https://github.com/kjrzxu/luci-app-clash openwrt/package/luci-app-clash
       - name: 编译5.10内核
         run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
       - name: 升级feeds
