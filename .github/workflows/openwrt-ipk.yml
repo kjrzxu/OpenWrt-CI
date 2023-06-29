@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: 准备工作
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: 部署编译环境
         run: |
