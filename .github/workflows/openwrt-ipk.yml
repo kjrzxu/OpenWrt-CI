@@ -74,7 +74,7 @@ jobs:
           cd openwrt
           make package/luci-app-clash/compile V=99
       - name : 上传bin文件夹到 github actions
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v2
         with:
           name: OpenWrt_ipk
           path: openwrt/bin
