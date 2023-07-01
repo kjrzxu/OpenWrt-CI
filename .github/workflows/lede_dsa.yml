@@ -10,13 +10,13 @@
 name: compile LEDE_dsa
 
 on:
-  push:
-    branches: 
-      - master
-  #schedule:
-  #  - cron: 0 0 1 * *
-  #watch:
-  #  types: started
+#  push:
+#    branches: 
+#      - main
+#  schedule:
+#    - cron: 0 0 1 * *
+#  watch:
+#    types: started
   workflow_dispatch:
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: 准备工作
-        uses: actions/checkout@master
+        uses: actions/checkout@v3
 #        with:
 #          fetch-depth: 0
 
@@ -75,7 +75,7 @@ jobs:
           echo -e "$(nproc) thread ../files."
           make -j$(($(nproc) + 1)) V=s
       - name : 上传bin文件夹(固件+ipk)到 github actions
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v3
         with:
           name: OpenWrt_LEDE_dsa
           path: openwrt/bin
