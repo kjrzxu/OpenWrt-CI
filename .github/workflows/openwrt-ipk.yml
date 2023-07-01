@@ -66,7 +66,7 @@ jobs:
           # 常用插件
           cat >> .config <<EOF
           CONFIG_PACKAGE_cloudflared=y
-#          CONFIG_PACKAGE_luci-app-cloudflared=y
+          #CONFIG_PACKAGE_luci-app-cloudflared=y
           EOF
           make defconfig
       - name: 下载软件包
