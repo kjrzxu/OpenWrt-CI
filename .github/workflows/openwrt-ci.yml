@@ -26,8 +26,6 @@ jobs:
 
       - name: 准备工作
         uses: actions/checkout@v2
-        with:
-          ref: master
       - name: 空间清理并部署编译环境
         env:
           DEBIAN_FRONTEND: noninteractive
