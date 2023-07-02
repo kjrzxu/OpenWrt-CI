@@ -41,8 +41,8 @@ jobs:
           vim wget xmlto xxd zlib1g-dev
       - name: 下载lede源码
         run: git clone https://github.com/immortalwrt/immortalwrt openwrt
-#      - name: 下载插件源码
-#        run: git clone https://github.com/kjrzxu/package openwrt/package/package
+      - name: 下载插件源码
+        run: git clone https://github.com/juangarcia4ks/luci-app-cloudflared openwrt/package
 #      - name: 编译5.10内核
 #        run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
       - name: 升级feeds
