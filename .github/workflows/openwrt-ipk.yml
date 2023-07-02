@@ -5,6 +5,7 @@
 # Copyright (C) 2020 KFERMercer <KFER.Mercer@gmail.com>
 # 
 # <https://github.com/KFERMercer/OpenWrt-CI>
+# run: git clone https://github.com/coolsnowwolf/lede openwrt
 #
 
 name: compile LEDE_ipk
@@ -40,7 +41,6 @@ jobs:
           libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \
           vim wget xmlto xxd zlib1g-dev
       - name: 下载lede源码
-#        run: git clone https://github.com/coolsnowwolf/lede openwrt
         run: git clone https://github.com/immortalwrt/immortalwrt openwrt
 #      - name: 下载插件源码
 #        run: git clone https://github.com/kjrzxu/package openwrt/package/package
