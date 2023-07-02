@@ -41,16 +41,16 @@ jobs:
           vim wget xmlto xxd zlib1g-dev
       - name: 下载lede源码
         run: git clone https://github.com/immortalwrt/immortalwrt openwrt
-#      - name: 下载插件源码
-#        run: git clone https://github.com/juangarcia4ks/luci-app-cloudflared openwrt/package
+      - name: 下载插件源码
+        run: git clone https://github.com/juangarcia4ks/luci-app-cloudflared openwrt/package/luci-app-cloudflared
 #      - name: 编译5.10内核
 #        run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
       - name: 升级feeds
         run: cd openwrt && ./scripts/feeds update -a
-#      - name: 修改文件
-#        run: |
-#          rm -rf openwrt/feeds/packages/net/cloudflared
-#          cp -r files/cloudflared openwrt/feeds/packages/net
+      - name: 修改文件
+        run: |
+          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
+          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 安装feeds
         run: cd openwrt && ./scripts/feeds install -a
       - name: 配置config文件
@@ -66,6 +66,7 @@ jobs:
           # 常用插件
           cat >> .config <<EOF
           CONFIG_PACKAGE_cloudflared=y
+          CONFIG_PACKAGE_luci-app-cloudflared=y
           EOF
           make defconfig
       - name: 下载软件包
