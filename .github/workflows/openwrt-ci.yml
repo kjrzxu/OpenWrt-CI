@@ -40,8 +40,8 @@ jobs:
           libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \
           vim wget xmlto xxd zlib1g-dev
       - name: 下载lede源码
-#        run: git clone https://github.com/coolsnowwolf/lede openwrt
         run: git clone https://github.com/immortalwrt/immortalwrt openwrt
+#        run: git clone https://github.com/coolsnowwolf/lede openwrt
       - name: 写入插件到默认配置
         run: |
           cd openwrt
