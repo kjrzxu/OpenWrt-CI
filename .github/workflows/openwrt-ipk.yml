@@ -40,17 +40,17 @@ jobs:
           libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \
           vim wget xmlto xxd zlib1g-dev
       - name: 下载lede源码
-        run: git clone https://github.com/coolsnowwolf/lede openwrt
-      - name: 下载插件源码
-        run: git clone https://github.com/kjrzxu/package openwrt/package/package
+        run: git clone https://github.com/immortalwrt/immortalwrt openwrt
+#      - name: 下载插件源码
+#        run: git clone https://github.com/kjrzxu/package openwrt/package/package
 #      - name: 编译5.10内核
 #        run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
       - name: 升级feeds
         run: cd openwrt && ./scripts/feeds update -a
-      - name: 修改文件
-        run: |
-          rm -rf openwrt/feeds/packages/net/cloudflared
-          cp -r files/cloudflared openwrt/feeds/packages/net
+#      - name: 修改文件
+#        run: |
+#          rm -rf openwrt/feeds/packages/net/cloudflared
+#          cp -r files/cloudflared openwrt/feeds/packages/net
       - name: 安装feeds
         run: cd openwrt && ./scripts/feeds install -a
       - name: 配置config文件
