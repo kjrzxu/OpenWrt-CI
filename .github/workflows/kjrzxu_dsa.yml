@@ -10,13 +10,13 @@
 name: compile kjrzxu_dsa
 
 on:
-  push:
-    branches: 
-      - master
-  #schedule:
-  #  - cron: 0 0 1 * *
-  #watch:
-  #  types: started
+#  push:
+#    branches: 
+#      - master
+#  schedule:
+#    - cron: 0 0 1 * *
+#  watch:
+#    types: started
   workflow_dispatch:
 
 jobs:
