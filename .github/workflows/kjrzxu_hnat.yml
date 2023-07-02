@@ -10,9 +10,9 @@
 name: compile kjrzxu_hnat
 
 on:
-  push:
-    branches: 
-      - master
+  #push:
+  #  branches: 
+  #    - master
   #schedule:
   #  - cron: 0 0 1 * *
   #watch:
