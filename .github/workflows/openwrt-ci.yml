@@ -46,7 +46,7 @@ jobs:
         run: |
           cd openwrt
           echo "src-git package https://github.com/kjrzxu/package.git" >> ./feeds.conf.default
-          echo "src-git openclash https://github.com/kjrzxu/OpenClash.git" >> ./feeds.conf.default
+          echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
       - name: 升级feeds
         run: cd openwrt && ./scripts/feeds update -a
       - name: 修改文件
@@ -55,6 +55,7 @@ jobs:
           rm -rf openwrt/feeds/luci/applications/luci-app-fileassistant
           rm -rf openwrt/feeds/luci/applications/luci-app-usb3disable
           sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
+          sed -i 's/_("OpenClash"/_("科学上网"/' openwrt/feeds/openclash/luci-app-openclash/luasrc/controller/openclash.lua
           sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
           rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 安装feeds
