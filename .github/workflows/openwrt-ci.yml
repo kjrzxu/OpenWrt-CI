@@ -52,7 +52,7 @@ jobs:
       - name: 修改文件
         run: |
           rm -rf openwrt/feeds/luci/applications/luci-app-eqos
-          #rm -rf openwrt/feeds/luci/applications/luci-app-fileassistant
+#          rm -rf openwrt/feeds/luci/applications/luci-app-fileassistant
           rm -rf openwrt/feeds/luci/applications/luci-app-usb3disable
           sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
           sed -i 's/_("OpenClash"/_("科学上网"/' openwrt/feeds/openclash/luci-app-openclash/luasrc/controller/openclash.lua
