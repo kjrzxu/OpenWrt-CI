@@ -54,6 +54,8 @@ jobs:
           rm -rf openwrt/feeds/luci/applications/luci-app-eqos
           rm -rf openwrt/feeds/luci/applications/luci-app-fileassistant
           rm -rf openwrt/feeds/luci/applications/luci-app-usb3disable
+          rm -rf openwrt/feeds/luci/applications/luci-app-passwall
+          rm -rf openwrt/feeds/luci/applications/luci-app-ssr-plus
           rm -rf openwrt/package/emortal/automount/files/15-automount
           cp -r files/15-automount openwrt/package/emortal/automount/files
           sed -i 's/samba4/samba/g' openwrt/package/emortal/autosamba/Makefile
@@ -78,10 +80,10 @@ jobs:
           # 常用插件
           cat >> .config <<EOF
           CONFIG_PACKAGE_ipv6helper=y
-          #CONFIG_PACKAGE_autosamba=y
+          CONFIG_PACKAGE_autosamba=y
           CONFIG_PACKAGE_automount=y
           #CONFIG_PACKAGE_cloudflared=y
-          CONFIG_PACKAGE_ddns-scripts_cloudflare.com-v4=y
+          CONFIG_PACKAGE_ddns-scripts-cloudflare=y
           CONFIG_PACKAGE_xupnpd=y
           CONFIG_PACKAGE_cloudflared=y
           CONFIG_PACKAGE_luci-theme-argon=y
@@ -98,7 +100,6 @@ jobs:
           CONFIG_PACKAGE_luci-app-diskman=y
           CONFIG_PACKAGE_luci-app-easymesh=y
           CONFIG_PACKAGE_luci-app-fileassistant=y
-          CONFIG_PACKAGE_luci-app-filetransfer=n
           CONFIG_PACKAGE_luci-app-frpc=y
           CONFIG_PACKAGE_luci-app-hd-idle=y
           CONFIG_PACKAGE_luci-app-iptvhelper=y
@@ -108,9 +109,6 @@ jobs:
           CONFIG_PACKAGE_luci-app-openclash=y
           CONFIG_PACKAGE_luci-app-ramfree=y
           CONFIG_PACKAGE_luci-app-socat=y
-          CONFIG_PACKAGE_luci-app-ssr-plus=n
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=n
-          CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=n
           CONFIG_PACKAGE_luci-app-syncdial=y
           CONFIG_PACKAGE_luci-app-ttyd=y
           CONFIG_PACKAGE_luci-app-turboacc=y
