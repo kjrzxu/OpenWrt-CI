@@ -45,7 +45,7 @@ jobs:
       - name: 写入插件到默认配置
         run: |
           cd openwrt
-          echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
+          echo "src-git openclash https://github.com/kjrzxu/OpenClash.git" >> ./feeds.conf.default
           git clone -b immortalwrt https://github.com/kjrzxu/package package/package
       - name: 升级feeds
         run: cd openwrt && ./scripts/feeds update -a
