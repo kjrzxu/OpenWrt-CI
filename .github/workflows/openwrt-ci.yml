@@ -47,14 +47,12 @@ jobs:
           cd openwrt
           echo "src-git package https://github.com/kjrzxu/package.git" >> ./feeds.conf.default
           echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
-      - name: 下载插件源码
-        run: git clone https://github.com/grayearth/luci-app-cloudflared openwrt/package/luci-app-cloudflared
       - name: 升级feeds
         run: cd openwrt && ./scripts/feeds update -a
       - name: 修改文件
         run: |
           rm -rf openwrt/feeds/luci/applications/luci-app-eqos
-          rm -rf openwrt/feeds/package/luci-app-cloudflared
+          rm -rf openwrt/feeds/luci/applications/luci-app-fileassistant
           rm -rf openwrt/feeds/luci/applications/luci-app-usb3disable
           sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
           sed -i 's/_("OpenClash"/_("科学上网"/' openwrt/feeds/openclash/luci-app-openclash/luasrc/controller/openclash.lua
@@ -88,7 +86,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-advanced=y
           CONFIG_PACKAGE_luci-app-arpbind=y
           CONFIG_PACKAGE_luci-app-autoreboot=y
-          CONFIG_PACKAGE_luci-app-cloudflared=y
+          #CONFIG_PACKAGE_luci-app-cloudflared=y
           CONFIG_PACKAGE_luci-app-control-speedlimit=y
           CONFIG_PACKAGE_luci-app-control-weburl=y
           CONFIG_PACKAGE_luci-app-ddns=y
