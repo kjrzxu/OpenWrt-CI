@@ -85,7 +85,6 @@ jobs:
           #CONFIG_PACKAGE_cloudflared=y
           CONFIG_PACKAGE_ddns-scripts-cloudflare=y
           CONFIG_PACKAGE_xupnpd=y
-          CONFIG_PACKAGE_cloudflared=y
           CONFIG_PACKAGE_luci-theme-argon=y
           CONFIG_PACKAGE_luci-app-argon-config=y
           CONFIG_PACKAGE_luci-app-accesscontrol=y
