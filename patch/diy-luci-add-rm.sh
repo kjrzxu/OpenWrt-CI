@@ -29,6 +29,6 @@ sed -i 's/samba4/samba/g' openwrt/package/lean/autosamba/files/20-smb
 sed -i 's/0666/0777/' openwrt/package/lean/autosamba/files/20-smb
 
 #修改插件配置文件
-sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
-sed -i 's/10/5/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
-sed -i 's/0/1/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
+sed -i 's#sda#/mnt/sda1#g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
+sed -i 's/10/5/g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
+sed -i 's/0/1/g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
