@@ -62,7 +62,6 @@ jobs:
       - name: 生成config内核编译
         run: |
           cd openwrt
-          touch ./.config
           cp ../.config .config
           make defconfig
       - name: 下载软件包
