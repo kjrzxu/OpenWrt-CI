@@ -63,7 +63,7 @@ jobs:
         run: |
           cd openwrt
           touch ./.config
-          cp ../.config .confi
+          cp ../.config .config
           make defconfig
       - name: 下载软件包
         run: |
