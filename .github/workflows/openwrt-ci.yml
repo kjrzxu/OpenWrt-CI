@@ -77,7 +77,7 @@ jobs:
           EOF
           # 常用插件
           cat >> .config <<EOF
-          CONFIG_LUCI_LANG_zh_Hans=y
+          CONFIG_PACKAGE_default-settings-chn=y
           CONFIG_PACKAGE_ipv6helper=y
           CONFIG_PACKAGE_autosamba=y
           CONFIG_PACKAGE_automount=y
