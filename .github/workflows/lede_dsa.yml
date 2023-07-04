@@ -62,7 +62,14 @@ jobs:
       - name: 生成config内核编译
         run: |
           cd openwrt
-          cp ../.config .config
+          touch ./.config
+          # 机型设置:
+          cat >> .config <<EOF
+          CONFIG_TARGET_ramips=y
+          CONFIG_TARGET_ramips_mt7621=y
+          CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y
+          CONFIG_PACKAGE_cloudflared=y
+          EOF
           make defconfig
       - name: 下载软件包
         run: |
