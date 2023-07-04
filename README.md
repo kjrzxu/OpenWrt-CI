@@ -1,7 +1,7 @@
 # Openwrt云编译
 来自仓库 https://github.com/hackyes/OpenWrt-CI
 编译版本：大雕仓库 https://github.com/coolsnowwolf/lede
-## 四种触发自动编译
+## 四种方式触发编译
 1、推送文件到main分支自动编译（需去掉前面的#）
 ```
 #  push:
