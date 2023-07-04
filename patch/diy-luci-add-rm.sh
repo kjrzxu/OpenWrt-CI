@@ -15,7 +15,6 @@ cp files/update_cloudflare_com_v4.sh openwrt/feeds/packages/net/ddns-scripts/fil
 
 #修改cloudflared
 #sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
-#sed -i '/init.d/d' openwrt/feeds/packages/net/cloudflared/Makefile
 #rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
 #rm -rf openwrt/feeds/packages/net/cloudflared
 #cp -r files/cloudflared openwrt/feeds/packages/net
@@ -31,5 +30,5 @@ sed -i 's/0666/0777/' openwrt/package/lean/autosamba/files/20-smb
 
 #修改插件配置文件
 sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
-#sed -i 's/10/5/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
-#sed -i 's/0/1/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
+sed -i 's/10/5/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
+sed -i 's/0/1/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
