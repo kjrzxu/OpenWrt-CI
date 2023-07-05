@@ -39,13 +39,18 @@ jobs:
           mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils \
           rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
       - name: 下载源码
-        run: git clone https://github.com/kjrzxu/lede openwrt
+        run: |
+         git clone https://github.com/kjrzxu/lede openwrt
+         git clone https://github.com/kjrzxu/package openwrt/package/package
+         git clone https://github.com/vernesong/OpenClash openwrt/package/openclash
 #      - name: 修改feeds.conf.default
 #        run: chmod +x diy-part1.sh && sh diy-part1.sh
       - name: 替换autosamba
         run: |
           rm -rf openwrt/package/lean/autosamba
-          cp -r build/autosamba openwrt/package/lean
+          cp -r files/autosamba openwrt/package/lean
+          rm -rf openwrt/package/lean/automount/files/15-automount
+          cp -r files/15-automount openwrt/package/lean/automount/files
       - name: 升级安装feeds
         run: |
           cd openwrt
@@ -53,8 +58,10 @@ jobs:
           ./scripts/feeds install -a
       - name: 更改5.10内核
         run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
-#      - name: 修改源码
-#        run: chmod +x diy-part2.sh && sh diy-part2.sh
+      - name: 修改源码
+        run: |
+          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
+          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 生成config内核编译
         run: |
           cd openwrt
