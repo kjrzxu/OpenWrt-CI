@@ -39,29 +39,15 @@ jobs:
           mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils \
           rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
       - name: 下载源码
-        run: |
-         git clone https://github.com/kjrzxu/lede openwrt
-         git clone https://github.com/kjrzxu/package openwrt/package/package
-         git clone https://github.com/vernesong/OpenClash openwrt/package/openclash
-#      - name: 修改feeds.conf.default
-#        run: chmod +x diy-part1.sh && sh diy-part1.sh
-      - name: 替换autosamba
-        run: |
-          rm -rf openwrt/package/lean/autosamba
-          cp -r files/autosamba openwrt/package/lean
-          rm -rf openwrt/package/lean/automount/files/15-automount
-          cp -r files/15-automount openwrt/package/lean/automount/files
-      - name: 升级安装feeds
-        run: |
-          cd openwrt
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a
-      - name: 更改5.10内核
+        run: git clone https://github.com/kjrzxu/lede openwrt
+      - name: 编译5.10内核
         run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
-      - name: 修改源码
-        run: |
-          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
-          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
+      - name: 升级feeds
+        run: cd openwrt && ./scripts/feeds update -a
+      - name: 安装feeds
+        run: cd openwrt && ./scripts/feeds install -a
+      - name: 修改luci源码
+        run: chmod +x patch/diy-luci.sh && sh patch/diy-luci.sh
       - name: 生成config内核编译
         run: |
           cd openwrt
@@ -75,10 +61,10 @@ jobs:
       - name: 开始编译固件
         run: |
           cd openwrt
-          echo -e "$(nproc) thread build."
+          echo -e "$(nproc) thread ../files."
           make -j$(($(nproc) + 1)) V=s
       - name : 上传bin文件夹(固件+ipk)到 github actions
         uses: actions/upload-artifact@master
         with:
-          name: OpenWrt_kjrzxu_dsa
-          path: openwrt/bin/targets
+          name: OpenWrt_LEDE_dsa
+          path: openwrt/bin
