@@ -109,3 +109,12 @@ sed -i 's/10/5/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 sed -i 's/0/1/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 sed -i '/cloudflared.init/d' openwrt/feeds/packages/net/cloudflared/Makefile
 rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
+
+#替换automount自动共享设置文件
+rm -rf openwrt/package/lean/automount/files/15-automount
+cp -r files/15-automount openwrt/package/lean/automount/files
+
+#修改autosamba中samba4为samba并更改0777权限
+sed -i 's/samba4/samba/g' openwrt/package/lean/autosamba/Makefile
+sed -i 's/samba4/samba/g' openwrt/package/lean/autosamba/files/20-smb
+sed -i 's/0666/0777/' openwrt/package/lean/autosamba/files/20-smb
