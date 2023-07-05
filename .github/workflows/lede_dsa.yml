@@ -56,13 +56,24 @@ jobs:
       - name: 安装feeds
         run: cd openwrt && ./scripts/feeds install -a
       - name: 替换修改luci插件和配置
-        run: chmod +x patch/diy-luci-add-rm.sh && sh patch/diy-luci-add-rm.sh
+        run: sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
       - name: 修改luci插件名称和顺序
-        run: chmod +x patch/diy-luci-order-name.sh && sh patch/diy-luci-order-name.sh
+        run: rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 生成config内核编译
         run: |
           cd openwrt
-          cp ../.config .config
+          touch ./.config
+          # 机型设置:
+          cat >> .config <<EOF
+          CONFIG_TARGET_ramips=y
+          CONFIG_TARGET_ramips_mt7621=y
+          CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y
+          EOF
+          # 常用插件
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_cloudflared=y
+          CONFIG_PACKAGE_luci-app-cloudflared=y
+          EOF
           make defconfig
       - name: 下载软件包
         run: |
