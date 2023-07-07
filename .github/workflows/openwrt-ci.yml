@@ -42,10 +42,8 @@ jobs:
       - name: 下载OpenWrt源码
         run: git clone https://github.com/immortalwrt/immortalwrt openwrt
 #        run: git clone https://github.com/coolsnowwolf/lede openwrt
-      - name: 写入插件到默认配置
-        run: |
-          cd openwrt
-          git clone -b immortalwrt https://github.com/kjrzxu/package package/package
+      - name: 下载插件
+        run: git clone -b immortalwrt https://github.com/kjrzxu/package openwrt/package/package
       - name: 升级feeds
         run: cd openwrt && ./scripts/feeds update -a
       - name: 修改文件
