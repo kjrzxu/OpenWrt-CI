@@ -57,10 +57,10 @@ jobs:
           sed -i 's/samba4/samba/g' openwrt/package/emortal/autosamba/files/20-smb
           sed -i 's/0666/0777/' openwrt/package/emortal/autosamba/files/20-smb
           sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
-          find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("OpenClash"/_("科学上网"/g' {} \;
+          find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("OpenClash"/_("科学上网"/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("Internet Access Schedule Control"/_("时间控制"/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's#"IP/MAC Binding"), 45#"MAC绑定"), 65#' {} \;
-          find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("ADBYBY Plus +"/_("广告屏蔽"/g' {} \;
+          find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("ADBYBY Plus +"/_("广告屏蔽"/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("USB Printer Server")/_("USB 打印")/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i sed -i 's/_("KMS Server")/_("KMS 激活")/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i sed -i 's/_("FTP Server")/_("FTP 服务")/' {} \;
@@ -68,14 +68,14 @@ jobs:
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Argon Config"/"主题设置"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Dynamic DNS"/"动态 DNS"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"frp Client"/"内网穿透"/' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Terminal"/"命令终端"/g' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"udpxy"/"IPTV单播"/g' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"uHTTPd"/"WEB 管理"/g' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"UPnP"/"UPnP转发"/g' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"MultiWAN Manager"/"负载均衡"/g' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Diagnostics"/"网络诊断"/g' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Backup / Flash Firmware"/"备份升级"/g' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Reboot"/"系统重启"/g' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Terminal"/"命令终端"/' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"udpxy"/"IPTV单播"/' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"uHTTPd"/"WEB 管理"/' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"UPnP"/"UPnP转发"/' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"MultiWAN Manager"/"负载均衡"/' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Diagnostics"/"网络诊断"/' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Backup / Flash Firmware"/"备份升级"/' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Reboot"/"系统重启"/' {} \;
 #          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
 #          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 安装feeds
