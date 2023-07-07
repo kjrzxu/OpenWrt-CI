@@ -62,8 +62,6 @@ jobs:
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's#"IP/MAC Binding"), 45#"MAC绑定"), 65#' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("ADBYBY Plus +"/_("广告屏蔽"/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("USB Printer Server")/_("USB 打印")/' {} \;
-          find openwrt/feeds -path '*/controller/*.lua' -exec sed -i sed -i 's/_("KMS Server")/_("KMS 激活")/' {} \;
-          find openwrt/feeds -path '*/controller/*.lua' -exec sed -i sed -i 's/_("FTP Server")/_("FTP 服务")/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/"Socat"), 100/"端口转发"), 100/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Argon Config"/"主题设置"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Dynamic DNS"/"动态 DNS"/' {} \;
@@ -77,6 +75,8 @@ jobs:
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Backup / Flash Firmware"/"备份升级"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Reboot"/"系统重启"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "网络存储"/msgstr "存储"/' {} \;
+          find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "KMS 服务器"/msgstr "KMS 激活"/' {} \;
+          find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "FTP 服务器"/msgstr "FTP 服务"/' {} \;
 #          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
 #          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 安装feeds
