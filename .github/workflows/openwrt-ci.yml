@@ -78,6 +78,8 @@ jobs:
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "网络存储"/msgstr "存储"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "KMS 服务器"/msgstr "KMS 激活"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "FTP 服务器"/msgstr "FTP 服务"/' {} \;
+          find openwrt/package -name 'mac80211.sh' -exec sed -i 's/ssid=ImmortalWrt/ssid=OpenWrt/' {} \;
+          find openwrt/package -name 'config_generate' -exec sed -i 's/hostname='ImmortalWrt'/hostname='OpenWrt'/' {} \;
 #          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
 #          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 安装feeds
