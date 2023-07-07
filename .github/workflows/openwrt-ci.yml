@@ -72,9 +72,9 @@ jobs:
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"UPnP"/"UPnP转发"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"MultiWAN Manager"/"负载均衡"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Diagnostics"/"网络诊断"/' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Backup / Flash Firmware"/"备份升级"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Reboot"/"系统重启"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's#services/wol#control/wol#' {} \;
+          find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "备份与升级"/msgstr "备份升级"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "网络存储"/msgstr "存储"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "KMS 服务器"/msgstr "KMS 激活"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "FTP 服务器"/msgstr "FTP 服务"/' {} \;
