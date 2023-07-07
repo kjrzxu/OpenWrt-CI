@@ -76,6 +76,7 @@ jobs:
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Diagnostics"/"网络诊断"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Backup / Flash Firmware"/"备份升级"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Reboot"/"系统重启"/' {} \;
+          find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "网络存储"/msgstr "存储"/' {} \;
 #          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
 #          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 安装feeds
