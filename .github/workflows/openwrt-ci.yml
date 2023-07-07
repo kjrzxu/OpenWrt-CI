@@ -67,10 +67,13 @@ jobs:
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Argon Config"/"主题设置"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Dynamic DNS"/"动态 DNS"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"frp Client"/"内网穿透"/' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json'  -exec sed -i 's/"Terminal"/"命令终端"/g' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json'  -exec sed -i 's/"udpxy"/"IPTV单播"/g' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json'  -exec sed -i 's/"uHTTPd"/"WEB 管理"/g' {} \;
-          find openwrt/feeds -path '*/menu.d/*.json'  -exec sed -i 's/"UPnP"/"UPnP转发"/g' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Terminal"/"命令终端"/g' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"udpxy"/"IPTV单播"/g' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"uHTTPd"/"WEB 管理"/g' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"UPnP"/"UPnP转发"/g' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Diagnostics"/"网络诊断"/g' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Backup / Flash Firmware"/"备份升级"/g' {} \;
+          find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Reboot"/"系统重启"/g' {} \;
 #          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
 #          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 安装feeds
