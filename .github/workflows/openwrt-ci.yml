@@ -59,6 +59,8 @@ jobs:
           sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("OpenClash"/_("科学上网"/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("Internet Access Schedule Control"/_("时间控制"/' {} \;
+          sed -i 's/"services"/"control"/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
+          sed -i 's/services/control/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/view/mia/mia_status.htm
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's#"IP/MAC Binding"), 45#"MAC绑定"), 65#' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("ADBYBY Plus +"/_("广告屏蔽"/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("USB Printer Server")/_("USB 打印")/' {} \;
