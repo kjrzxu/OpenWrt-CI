@@ -59,6 +59,8 @@ jobs:
         run: chmod +x patch/diy-luci-add-rm.sh && sh patch/diy-luci-add-rm.sh
       - name: 修改luci插件名称和顺序
         run: chmod +x patch/diy-luci-order-name.sh && sh patch/diy-luci-order-name.sh
+      - name: 修改cloudflared源码
+        run: sed -i 's/PKG_USE_MIPS16:=0/PKG_BUILD_FLAGS:=no-mips16/' openwrt/feeds/packages/net/cloudflared/Makefile
       - name: 安装feeds
         run: cd openwrt && ./scripts/feeds install -a
       - name: 生成config内核编译
