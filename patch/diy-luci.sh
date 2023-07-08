@@ -20,10 +20,6 @@ sed -i 's/_("Scheduled Tasks"), 46/_("Scheduled Tasks"), 51/' openwrt/feeds/luci
 sed -i 's#_("Backup / Flash Firmware"#_("备份升级"#' openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
 sed -i 's/_("Reboot"/_("系统重启"/' openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
 
-# 替换update_cloudflare_com_v4.sh
-rm -rf openwrt/feeds/packages/net/ddns-scripts/files/update_cloudflare_com_v4.sh
-cp files/update_cloudflare_com_v4.sh openwrt/feeds/packages/net/ddns-scripts/files
-
 # 替换原argon主题和argon-config主题设置
 rm -rf openwrt/feeds/luci/themes/luci-theme-argon
 rm -rf openwrt/feeds/luci/applications/luci-app-argon-config
@@ -31,7 +27,29 @@ cp -r files/luci-theme-argon openwrt/feeds/luci/themes
 cp -r files/luci-app-argon-config openwrt/feeds/luci/applications
 
 # 替换默认主题bootstrap为argon主题
-sed -i 's/bootstrap/argon/ig' openwrt/feeds/luci/collections/luci/Makefile
+#sed -i 's/bootstrap/argon/ig' openwrt/feeds/luci/collections/luci/Makefile
+
+# 替换update_cloudflare_com_v4.sh
+rm -rf openwrt/feeds/packages/net/ddns-scripts/files/update_cloudflare_com_v4.sh
+cp files/update_cloudflare_com_v4.sh openwrt/feeds/packages/net/ddns-scripts/files
+
+#修改hd-idle配置文件
+sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
+sed -i 's/10/5/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
+sed -i 's/0/1/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
+
+#修改coudflared配置文件
+sed -i '/cloudflared.init/d' openwrt/feeds/packages/net/cloudflared/Makefile
+rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
+
+#替换automount自动共享设置文件
+rm -rf openwrt/package/lean/automount/files/15-automount
+cp -r files/15-automount openwrt/package/lean/automount/files
+
+#修改autosamba中samba4为samba并更改0777权限
+sed -i 's/samba4/samba/g' openwrt/package/lean/autosamba/Makefile
+sed -i 's/samba4/samba/g' openwrt/package/lean/autosamba/files/20-smb
+sed -i 's/0666/0777/' openwrt/package/lean/autosamba/files/20-smb
 
 #修改插件名称并调整顺序
 #sed -i 's/_("ShadowSocksR Plus+"/_("科学上网"/' openwrt/feeds/helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
@@ -102,19 +120,3 @@ sed -i 's/"services"/"control"/g' openwrt/feeds/luci/applications/luci-app-wol/l
 #sed -i 's/_("ZeroTier"), 99/_("ZeroTier"), 120/' openwrt/feeds/luci/applications/luci-app-zerotier/luasrc/controller/zerotier.lua
 #sed -i 's/"vpn", "zerotier"/"services", "zerotier"/g' openwrt/feeds/luci/applications/luci-app-zerotier/luasrc/controller/zerotier.lua
 #sed -i 's/vpn/services/g' openwrt/feeds/luci/applications/luci-app-zerotier/luasrc/view/zerotier/zerotier_status.htm
-
-#修改配置文件
-sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
-sed -i 's/10/5/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
-sed -i 's/0/1/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
-sed -i '/cloudflared.init/d' openwrt/feeds/packages/net/cloudflared/Makefile
-rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
-
-#替换automount自动共享设置文件
-rm -rf openwrt/package/lean/automount/files/15-automount
-cp -r files/15-automount openwrt/package/lean/automount/files
-
-#修改autosamba中samba4为samba并更改0777权限
-sed -i 's/samba4/samba/g' openwrt/package/lean/autosamba/Makefile
-sed -i 's/samba4/samba/g' openwrt/package/lean/autosamba/files/20-smb
-sed -i 's/0666/0777/' openwrt/package/lean/autosamba/files/20-smb
