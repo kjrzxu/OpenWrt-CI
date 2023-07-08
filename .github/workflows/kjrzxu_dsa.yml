@@ -55,8 +55,6 @@ jobs:
         run: cd openwrt && ./scripts/feeds install -a
       - name: 修改luci源码
         run: chmod +x patch/diy-luci.sh && sh patch/diy-luci.sh
-      - name: 修改cloudflared源码
-        run: sed -i 's/PKG_USE_MIPS16:=0/PKG_BUILD_FLAGS:=no-mips16/' openwrt/feeds/packages/net/cloudflared/Makefile
       - name: 生成config内核编译
         run: |
           cd openwrt
