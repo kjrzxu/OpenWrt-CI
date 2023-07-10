@@ -103,7 +103,7 @@ jobs:
           CONFIG_PACKAGE_ipv6helper=y
           CONFIG_PACKAGE_autosamba=y
           CONFIG_PACKAGE_automount=y
-          CONFIG_PACKAGE_cloudflared=y
+          #CONFIG_PACKAGE_cloudflared=y
           CONFIG_PACKAGE_ddns-scripts-cloudflare=y
           CONFIG_PACKAGE_xupnpd=y
           CONFIG_PACKAGE_luci-theme-argon=y
