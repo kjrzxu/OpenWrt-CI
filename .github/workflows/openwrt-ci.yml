@@ -58,7 +58,8 @@ jobs:
           sed -i 's/0666/0777/' openwrt/package/emortal/autosamba/files/20-smb
           sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
           sed -i '/timezone/i\		set system.@system[0].hostname="OpenWrt"' openwrt/package/emortal/default-settings/files/99-default-settings-chinese
-          sed -i "/downloads/a\sed -i 's/DISTRIB_DESCRIPTION='ImmortalWrt/DISTRIB_DESCRIPTION='OpenWrt/ /etc/openwrt_release" openwrt/package/emortal/default-settings/files/99-default-settings-chinese
+          sed -i "/downloads/a\sed -i 's/ssid=ImmortalWrt/ssid=OpenWrt/' /lib/wifi/mac80211.sh" openwrt/package/emortal/default-settings/files/99-default-settings-chinese
+          sed -i "/downloads/a\sed -i 's/ImmortalWrt/OpenWrt/g' /etc/openwrt_release" openwrt/package/emortal/default-settings/files/99-default-settings-chinese
           sed -i 's/"services"/"control"/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
           sed -i 's/services/control/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/view/mia/mia_status.htm
           find openwrt/package -path '*/i18n/*.po' -exec sed -i 's/msgstr "网络存储"/msgstr "存储"/' {} \;
