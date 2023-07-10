@@ -57,6 +57,9 @@ jobs:
           sed -i 's/samba4/samba/g' openwrt/package/emortal/autosamba/files/20-smb
           sed -i 's/0666/0777/' openwrt/package/emortal/autosamba/files/20-smb
           sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
+          sed -i '/zonename/a 		set system.@system[0].hostname="OpenWrt"' openwrt/package/emortal/default-settings/files/99-default-settings-chinese
+          sed -i '/downloads/a sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release' openwrt/package/emortal/default-settings/files/99-default-settings-chinese
+          sed -i '/DISTRIB_DESCRIPTION/a echo "DISTRIB_DESCRIPTION='OpenWrt '" >> /etc/openwrt_release' openwrt/package/emortal/default-settings/files/99-default-settings-chinese
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("OpenClash"/_("科学上网"/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("Internet Access Schedule Control"/_("时间控制"/' {} \;
           sed -i 's/"services"/"control"/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
@@ -80,9 +83,6 @@ jobs:
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "KMS 服务器"/msgstr "KMS 激活"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "FTP 服务器"/msgstr "FTP 服务"/' {} \;
           find openwrt/package -path '*/i18n/*.po' -exec sed -i 's/msgstr "网络存储"/msgstr "存储"/' {} \;
-          find openwrt/package -name 'mac80211.sh' -exec sed -i 's/ssid=ImmortalWrt/ssid=OpenWrt/' {} \;
-          find openwrt/package -name 'config_generate' -exec sed -i 's/hostname='ImmortalWrt'/hostname='OpenWrt'/' {} \;
-          find openwrt/include -name 'trusted-firmware-a.mk' -exec sed -i 's/STRING="ImmortalWrt/STRING="OpenWrt/' {} \;
 #          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
 #          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 安装feeds
