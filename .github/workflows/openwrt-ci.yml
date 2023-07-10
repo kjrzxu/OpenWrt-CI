@@ -58,8 +58,7 @@ jobs:
           sed -i 's/0666/0777/' openwrt/package/emortal/autosamba/files/20-smb
           sed -i 's#sda#/mnt/sda1#' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
           sed -i '/timezone/i\		set system.@system[0].hostname="OpenWrt"' openwrt/package/emortal/default-settings/files/99-default-settings-chinese
-          sed -i '/downloads/a\sed -i '/DISTRIB_DESCRIPTION/d' /etc/openwrt_release' openwrt/package/emortal/default-settings/files/99-default-settings-chinese
-          sed -i '/DISTRIB_DESCRIPTION/a\echo "DISTRIB_DESCRIPTION='OpenWrt '" >> /etc/openwrt_release' openwrt/package/emortal/default-settings/files/99-default-settings-chinese
+          sed -i "/downloads/a\sed -i 's/DISTRIB_DESCRIPTION='ImmortalWrt'/DISTRIB_DESCRIPTION='OpenWrt'/ /etc/openwrt_release" openwrt/package/emortal/default-settings/files/99-default-settings-chinese
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("OpenClash"/_("科学上网"/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's/_("Internet Access Schedule Control"/_("时间控制"/' {} \;
           sed -i 's/"services"/"control"/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
