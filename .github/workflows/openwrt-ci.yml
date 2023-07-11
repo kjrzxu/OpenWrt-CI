@@ -74,7 +74,7 @@ jobs:
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "USB 打印服务器"/msgstr "USB 打印"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "Socat"/msgstr "端口转发"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "Argon 主题设置"/msgstr "主题设置"/' {} \;
-          find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "动态DNS"/msgstr "动态 DNS"/' {} \;
+          find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "动态 DNS(DDNS)"/msgstr "动态 DNS"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "frp 客户端"/msgstr "内网穿透"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "UPnP"/msgstr "UPnP转发"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "uHTTPd"/msgstr "WEB 管理"/' {} \;
