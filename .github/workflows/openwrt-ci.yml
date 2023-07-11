@@ -66,8 +66,8 @@ jobs:
           find openwrt/package -path '*/i18n/*.po' -exec sed -i 's/msgstr "网络存储"/msgstr "存储"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's#services/wol#control/wol#' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's/"Diagnostics"/"网络诊断"/' {} \;
+          sed -i '7140s/msgstr "重启"/msgstr "系统重启"/' openwrt/feeds/luci/modules/luci-base/po/zh_Hans/base.po
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "备份与升级"/msgstr "备份升级"/' {} \;
-          find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "重启"/msgstr "系统重启"/' {} \;
           find openwrt/feeds -path '*/zh-cn/*.po' -exec sed -i 's/msgstr "OpenClash"/msgstr "科学上网"/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's#"IP/MAC Binding"), 45#"MAC绑定"), 65#' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "上网时间控制"/msgstr "时间控制"/' {} \;
