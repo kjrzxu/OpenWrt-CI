@@ -60,7 +60,8 @@ jobs:
           sed -i 's/"services"/"control"/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
           sed -i 's/services/control/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/view/mia/mia_status.htm
           find openwrt/package -name '99*-chinese' -exec sed -i '/timezone/i\		set system.@system[0].hostname="OpenWrt"' {} \;
-          find openwrt/package -name '99*-chinese' -exec sed -i "/downloads/a\sed -i 's/ssid=ImmortalWrt/ssid=OpenWrt/' /lib/wifi/mac80211.sh" {} \;
+          find openwrt/package -name '99*-chinese' -exec sed -i "/downloads/a\sed -i 's/ImmortalWrt/OpenWrt/' /lib/wifi/mac80211.sh" {} \;
+          find openwrt/package -name '99*-chinese' -exec sed -i "/downloads/a\sed -i 's/ImmortalWrt/OpenWrt/g' /etc/config/wireless" {} \;
           find openwrt/package -name '99*-chinese' -exec sed -i "/downloads/a\sed -i 's/ImmortalWrt/OpenWrt/g' /etc/openwrt_release" {} \;
           find openwrt/package -path '*/i18n/*.po' -exec sed -i 's/msgstr "网络存储"/msgstr "存储"/' {} \;
           find openwrt/feeds -path '*/menu.d/*.json' -exec sed -i 's#services/wol#control/wol#' {} \;
