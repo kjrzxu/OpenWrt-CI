@@ -44,7 +44,7 @@ jobs:
           sudo -E apt clean
           sudo -E timedatectl set-timezone "Asia/Shanghai"
       - name: 下载源码
-        run: git clone https://github.com/kjrzxu/lede openwrt
+        run: git clone https://github.com/coolsnowwolf/lede openwrt
       - name: 写入插件到默认配置
         run: |
           cd openwrt
