@@ -56,7 +56,7 @@ sed -i 's/_("HDD Idle"), 60/_("HDD Idle"), 70/' openwrt/feeds/luci/applications/
 sed -i 's/"services"/"nas"/g' openwrt/feeds/luci/applications/luci-app-hd-idle/luasrc/controller/hd_idle.lua
 
 sed -i 's/_("omcproxy")/_("omcproxy"), 10/' openwrt/feeds/luci/applications/luci-app-omcproxy/luasrc/controller/omcproxy.lua
-#sed -i 's/"services"/"iptv"/g' openwrt/feeds/luci/applications/luci-app-omcproxy/luasrc/controller/omcproxy.lua
+sed -i 's/"services"/"iptv"/g' openwrt/feeds/luci/applications/luci-app-omcproxy/luasrc/controller/omcproxy.lua
 
 sed -i 's/"services"/"nas"/g' openwrt/feeds/luci/applications/luci-app-samba/luasrc/controller/samba.lua
 
@@ -69,7 +69,7 @@ sed -i 's/"TTYD Terminal"), 10/"命令终端"), 55/' openwrt/feeds/luci/applicat
 sed -i 's/"Turbo ACC Center"), 101/"网络加速"), 101/' openwrt/feeds/luci/applications/luci-app-turboacc/luasrc/controller/turboacc.lua
 
 sed -i 's/_("udpxy")/_("IPTV单播"), 99/' openwrt/feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
-sed -i 's/"services"/"iptv"/g' openwrt/feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
+#sed -i 's/"services"/"iptv"/g' openwrt/feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
 
 sed -i 's/_("uHTTPd")/_("WEB 管理"), 102/' openwrt/feeds/luci/applications/luci-app-uhttpd/luasrc/controller/uhttpd/uhttpd.lua
 
