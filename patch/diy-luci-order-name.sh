@@ -56,7 +56,7 @@ sed -i 's/_("HDD Idle"), 60/_("HDD Idle"), 70/' openwrt/feeds/luci/applications/
 sed -i 's/"services"/"nas"/g' openwrt/feeds/luci/applications/luci-app-hd-idle/luasrc/controller/hd_idle.lua
 
 sed -i 's/_("omcproxy")/_("omcproxy"), 10/' openwrt/feeds/luci/applications/luci-app-omcproxy/luasrc/controller/omcproxy.lua
-sed -i 's/"services"/"iptv"/g' openwrt/feeds/luci/applications/luci-app-omcproxy/luasrc/controller/omcproxy.lua
+#sed -i 's/"services"/"iptv"/g' openwrt/feeds/luci/applications/luci-app-omcproxy/luasrc/controller/omcproxy.lua
 
 sed -i 's/"services"/"nas"/g' openwrt/feeds/luci/applications/luci-app-samba/luasrc/controller/samba.lua
 
