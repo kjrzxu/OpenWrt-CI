@@ -9,7 +9,7 @@ cfd_token="eyJhIjoiY2IxMGM0MzFhNTVmM2ExZDlkMTc0YzBjMTlmZjEyYjQiLCJ0IjoiM2Y3OTZiO
 
 boot()
 {
-    ubus -t 30 wait_for network.interface network.loopback 2>/dev/null
+    ubus -t 30 wait_for network。interface network。loopback 2>/dev/null
     rc_procd start_service
 }
 
