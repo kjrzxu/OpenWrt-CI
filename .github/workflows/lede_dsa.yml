@@ -50,7 +50,7 @@ jobs:
           cd openwrt
           echo "src-git package https://github.com/kjrzxu/package.git" >> ./feeds.conf.default
           echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
-#          echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
+          echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
       - name: 编译5.10内核
         run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
       - name: 升级feeds
