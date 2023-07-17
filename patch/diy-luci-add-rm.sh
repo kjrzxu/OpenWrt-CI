@@ -14,8 +14,8 @@ rm -rf openwrt/feeds/packages/net/ddns-scripts/files/update_cloudflare_com_v4.sh
 cp files/update_cloudflare_com_v4.sh openwrt/feeds/packages/net/ddns-scripts/files
 
 #修改cloudflared
-#sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
-#rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
+sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
+rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
 #rm -rf openwrt/feeds/packages/net/cloudflared
 #cp -r files/cloudflared openwrt/feeds/packages/net
 
