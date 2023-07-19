@@ -106,6 +106,7 @@ jobs:
           CONFIG_PACKAGE_autosamba=y
           CONFIG_PACKAGE_automount=y
           #CONFIG_PACKAGE_cloudflared=y
+          CONFIG_PACKAGE_msd_lite=y
           CONFIG_PACKAGE_ddns-scripts-cloudflare=y
           CONFIG_PACKAGE_xupnpd=y
           CONFIG_PACKAGE_luci-theme-argon=y
@@ -134,7 +135,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-syncdial=y
           CONFIG_PACKAGE_luci-app-ttyd=y
           CONFIG_PACKAGE_luci-app-turboacc=y
-          CONFIG_PACKAGE_luci-app-udpxy=y
+          #CONFIG_PACKAGE_luci-app-udpxy=y
           CONFIG_PACKAGE_luci-app-msd_lite=y
           CONFIG_PACKAGE_luci-app-uhttpd=y
           #CONFIG_PACKAGE_luci-app-unblockmusic=y
