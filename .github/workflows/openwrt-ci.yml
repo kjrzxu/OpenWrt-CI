@@ -53,6 +53,10 @@ jobs:
           rm -rf openwrt/feeds/luci/applications/luci-app-ssr-plus
           rm -rf openwrt/package/emortal/automount/files/15-automount
           cp -r files/15-automount openwrt/package/emortal/automount/files
+          rm -rf openwrt/feeds/luci/themes/luci-theme-argon
+          git clone https://github.com/jerrykuku/luci-theme-argon.git openwrt/feeds/luci/themes/luci-theme-argon
+          rm -rf openwrt/feeds/luci/applications/luci-app-argon-config
+          git clone https://github.com/jerrykuku/luci-app-argon-config.git openwrt/feeds/luci/applications/luci-app-argon-config
           sed -i 's/samba4/samba/g' openwrt/package/emortal/autosamba/Makefile
           sed -i 's/samba4/samba/g' openwrt/package/emortal/autosamba/files/20-smb
           sed -i 's/0666/0777/' openwrt/package/emortal/autosamba/files/20-smb
@@ -83,8 +87,8 @@ jobs:
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "FTP 服务器"/msgstr "FTP 服务"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "MultiWAN 管理器"/msgstr "负载均衡"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "udpxy"/msgstr "IPTV单播"/' {} \;
-          rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
-          cp -r files/cloudflared.init openwrt/feeds/packages/net/cloudflared/files
+#          rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
+#          cp -r files/cloudflared.init openwrt/feeds/packages/net/cloudflared/files
 #          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
 #          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 安装feeds
