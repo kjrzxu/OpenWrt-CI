@@ -37,3 +37,4 @@ sed -i 's/0/1/g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 
 #删除原插件
 rm -rf openwrt/feeds/packages/net/msd_lite
+git clone https://github.com/ximiTech/msd_lite.git openwrt/feeds/packages/net/msd_lite
