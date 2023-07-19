@@ -32,3 +32,6 @@ sed -i 's/0666/0777/' openwrt/package/lean/autosamba/files/20-smb
 sed -i 's#sda#/mnt/sda1#g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 sed -i 's/10/5/g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 sed -i 's/0/1/g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
+
+#删除原插件
+rm -rf openwrt/feeds/packages/net/msd_lite
