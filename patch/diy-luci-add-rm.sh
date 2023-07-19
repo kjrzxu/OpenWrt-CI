@@ -2,9 +2,11 @@
 
 # 替换原argon主题和argon-config主题设置
 rm -rf openwrt/feeds/luci/themes/luci-theme-argon
+#cp -r files/luci-theme-argon openwrt/feeds/luci/themes
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
 rm -rf openwrt/feeds/luci/applications/luci-app-argon-config
-cp -r files/luci-theme-argon openwrt/feeds/luci/themes
-cp -r files/luci-app-argon-config openwrt/feeds/luci/applications
+#cp -r files/luci-app-argon-config openwrt/feeds/luci/applications
+git clone -b 18.06 https://github.com/jerrykuku/luci-app-argon-config.git feeds/luci/applications/luci-app-argon-config
 
 # 替换默认主题bootstrap为argon主题
 #sed -i 's/bootstrap/argon/ig' openwrt/feeds/luci/collections/luci/Makefile
