@@ -21,6 +21,10 @@ rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
 #rm -rf openwrt/feeds/packages/net/cloudflared
 #cp -r files/cloudflared openwrt/feeds/packages/net
 
+#替换原msd_lite
+rm -rf openwrt/feeds/packages/net/msd_lite
+git clone https://github.com/ximiTech/msd_lite.git openwrt/feeds/packages/net/msd_lite
+
 #替换automount自动共享设置文件
 rm -rf openwrt/package/lean/automount/files/15-automount
 cp -r files/15-automount openwrt/package/lean/automount/files
@@ -35,6 +39,4 @@ sed -i 's#sda#/mnt/sda1#g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.co
 sed -i 's/10/5/g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 sed -i 's/0/1/g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 
-#删除原插件
-rm -rf openwrt/feeds/packages/net/msd_lite
-git clone https://github.com/ximiTech/msd_lite.git openwrt/feeds/packages/net/msd_lite
+sed -i 's/START=19/START=99/g' openwrt/feeds/packages/net/mwan3/files/etc/init.d/mwan3
