@@ -87,8 +87,12 @@ jobs:
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "FTP 服务器"/msgstr "FTP 服务"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "MultiWAN 管理器"/msgstr "负载均衡"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "udpxy"/msgstr "IPTV单播"/' {} \;
+          sed -i '#$(1)/etc/config#d' openwrt/feeds/packages/net/cloudflared/Makefile
+          rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.config
+          sed -i '#$(1)/etc/init.d#d' openwrt/feeds/packages/net/cloudflared/Makefile
           rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
-          cp -r files/cloudflared.init openwrt/feeds/packages/net/cloudflared/files
+#          rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
+#          cp -r files/cloudflared.init openwrt/feeds/packages/net/cloudflared/files
 #          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
 #          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
       - name: 安装feeds
@@ -120,7 +124,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-advanced=y
           CONFIG_PACKAGE_luci-app-arpbind=y
           CONFIG_PACKAGE_luci-app-autoreboot=y
-          #CONFIG_PACKAGE_luci-app-cloudflared=y
+          CONFIG_PACKAGE_luci-app-cloudflared=y
           CONFIG_PACKAGE_luci-app-control-speedlimit=y
           CONFIG_PACKAGE_luci-app-control-weburl=y
           CONFIG_PACKAGE_luci-app-ddns=y
