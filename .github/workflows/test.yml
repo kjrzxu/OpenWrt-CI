@@ -1,0 +1,100 @@
+#
+# This is free software, lisence use MIT.
+# 
+# Copyright (C) 2019 P3TERX <https://p3terx.com>
+# Copyright (C) 2020 KFERMercer <KFER.Mercer@gmail.com>
+# 
+# <https://github.com/KFERMercer/OpenWrt-CI>
+#
+
+name: compile LEDE_hnat_test
+
+on:
+  #push:
+  #  branches: 
+  #    - master
+  #schedule:
+  #  - cron: 0 0 1 * *
+  #watch:
+  #  types: started
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+      - name: 准备工作
+        uses: actions/checkout@v3
+#        with:
+#          fetch-depth: 0
+
+      - name: 部署编译环境
+        run: |
+          sudo apt update -y
+          sudo apt full-upgrade -y
+          sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
+          bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
+          git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
+          libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \
+          mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools \
+          libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \
+          vim wget xmlto xxd zlib1g-dev
+      - name: 下载源码
+        run: git clone https://github.com/coolsnowwolf/lede openwrt
+      - name: 写入插件到默认配置
+        run: |
+          cd openwrt
+          echo "src-git package https://github.com/kjrzxu/package.git" >> ./feeds.conf.default
+          echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
+#          echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
+#      - name: 更改5.10内核
+#        run: sed -i '/USE_ELF_REL=y/a CONFIG_MT753X_GSW=y' openwrt/target/linux/ramips/mt7621/config-5.10
+      - name: 替换hnat驱动，替换ramips
+        run: |
+          rm -rf openwrt/target/linux/ramips/dts/mt7621_hiwifi_hc5962.dts
+          rm -rf openwrt/target/linux/ramips/mt7621/base-files/etc/board.d/02_network
+          cp files/LEDE-hnat-02network-dst/mt7621_hiwifi_hc5962.dts openwrt/target/linux/ramips/dts
+          cp files/LEDE-hnat-02network-dst/02_network openwrt/target/linux/ramips/mt7621/base-files/etc/board.d
+#          rm -rf openwrt/target/linux/ramips
+#          cp -r files/ramips openwrt/target/linux
+      - name: 升级feeds
+        run: cd openwrt && ./scripts/feeds update -a
+      - name: 替换修改luci插件和配置
+        run: chmod +x patch/diy-luci-add-rm.sh && sh patch/diy-luci-add-rm.sh
+      - name: 修改luci插件名称和顺序
+        run: chmod +x patch/diy-luci-order-name.sh && sh patch/diy-luci-order-name.sh
+      - name: 安装feeds
+        run: cd openwrt && ./scripts/feeds install -a
+      - name: 生成config内核编译
+        run: |
+          cd openwrt
+          touch ./.config
+          # 机型设置:
+          cat >> .config <<EOF
+          CONFIG_TARGET_ramips=y
+          CONFIG_TARGET_ramips_mt7621=y
+          CONFIG_TARGET_ramips_mt7621_DEVICE_hiwifi_hc5962=y
+          EOF
+          # 常用插件
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_cloudflared=y
+          #CONFIG_PACKAGE_luci-app-cloudflared=y
+          EOF
+          make defconfig
+      - name: 下载软件包
+        run: |
+          cd openwrt
+          make download -j8
+          find dl -size -1024c -exec rm -f {} \;
+      - name: 开始编译固件
+        run: |
+          cd openwrt
+          echo -e "$(nproc) thread build."
+          make -j$(($(nproc) + 1)) V=s
+      - name : 上传bin文件夹(固件+ipk)到 github actions
+        uses: actions/upload-artifact@v3
+        with:
+          name: OpenWrt_LEDE_hnat_test
+          path: openwrt/bin
