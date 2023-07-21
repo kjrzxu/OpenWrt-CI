@@ -22,9 +22,11 @@ sed -i 's/_("Reboot"/_("系统重启"/' openwrt/feeds/luci/modules/luci-mod-admi
 
 # 替换原argon主题和argon-config主题设置
 rm -rf openwrt/feeds/luci/themes/luci-theme-argon
+#cp -r files/luci-theme-argon openwrt/feeds/luci/themes
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git openwrt/feeds/luci/themes/luci-theme-argon
 rm -rf openwrt/feeds/luci/applications/luci-app-argon-config
-cp -r files/luci-theme-argon openwrt/feeds/luci/themes
-cp -r files/luci-app-argon-config openwrt/feeds/luci/applications
+#cp -r files/luci-app-argon-config openwrt/feeds/luci/applications
+git clone -b 18.06 https://github.com/jerrykuku/luci-app-argon-config.git openwrt/feeds/luci/applications/luci-app-argon-config
 
 # 替换默认主题bootstrap为argon主题
 #sed -i 's/bootstrap/argon/ig' openwrt/feeds/luci/collections/luci/Makefile
@@ -50,6 +52,10 @@ cp -r files/15-automount openwrt/package/lean/automount/files
 sed -i 's/samba4/samba/g' openwrt/package/lean/autosamba/Makefile
 sed -i 's/samba4/samba/g' openwrt/package/lean/autosamba/files/20-smb
 sed -i 's/0666/0777/' openwrt/package/lean/autosamba/files/20-smb
+
+#替换原msd_lite
+rm -rf openwrt/feeds/packages/net/msd_lite
+git clone https://github.com/ximiTech/msd_lite.git openwrt/feeds/packages/net/msd_lite
 
 #修改插件名称并调整顺序
 #sed -i 's/_("ShadowSocksR Plus+"/_("科学上网"/' openwrt/feeds/helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
