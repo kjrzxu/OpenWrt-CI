@@ -38,5 +38,3 @@ sed -i 's/0666/0777/' openwrt/package/lean/autosamba/files/20-smb
 sed -i 's#sda#/mnt/sda1#g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 sed -i 's/10/5/g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 sed -i 's/0/1/g' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
-
-sed -i 's/START=19/START=99/g' openwrt/feeds/packages/net/mwan3/files/etc/init.d/mwan3
