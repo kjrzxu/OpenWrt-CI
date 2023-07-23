@@ -89,6 +89,8 @@ jobs:
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "udpxy"/msgstr "IPTV单播"/' {} \;
           sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
           rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
+          sed -i '/cloudflared.config $/d' openwrt/feeds/packages/net/cloudflared/Makefile
+          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.config
 #          rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
 #          cp -r files/cloudflared.init openwrt/feeds/packages/net/cloudflared/files
       - name: 安装feeds
