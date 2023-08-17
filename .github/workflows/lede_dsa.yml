@@ -55,10 +55,6 @@ jobs:
         run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
       - name: 升级feeds
         run: cd openwrt && ./scripts/feeds update -a
-      - name: 替换cloudflared
-        run: |
-          rm -rf openwrt/feeds/package/luci-app-cloudflared
-          git clone https://github.com/animegasan/luci-app-cloudflared.git openwrt/feeds/package
       - name: 安装feeds
         run: cd openwrt && ./scripts/feeds install -a
       - name: 替换修改luci插件和配置
