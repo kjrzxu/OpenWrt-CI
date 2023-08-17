@@ -1,0 +1,11 @@
+msgid "Status"
+msgstr "状态"
+
+msgid "Enable"
+msgstr "开启"
+
+msgid "Create or manage your cloudflare network"
+msgstr "新建或编辑你的cloudflare网络"
+
+msgid "Zero Trust Security services from Cloudflare to help you get maximum security both from outside and within the network"
+msgstr "Cloudflare的Zero Trust安全服务可帮助您从网络内外获得最大的安全性"
