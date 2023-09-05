@@ -43,6 +43,8 @@ sed -i 's/0/1/' openwrt/feeds/packages/utils/hd-idle/files/hd-idle.config
 #修改coudflared配置文件
 sed -i '/cloudflared.init/d' openwrt/feeds/packages/net/cloudflared/Makefile
 rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
+sed -i '/cloudflared.config $(1)/d' openwrt/feeds/packages/net/cloudflared/Makefile
+rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.config
 
 #替换automount自动共享设置文件
 rm -rf openwrt/package/lean/automount/files/15-automount
