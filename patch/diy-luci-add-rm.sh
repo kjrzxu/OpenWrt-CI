@@ -16,8 +16,10 @@ rm -rf openwrt/feeds/packages/net/ddns-scripts/files/update_cloudflare_com_v4.sh
 cp files/update_cloudflare_com_v4.sh openwrt/feeds/packages/net/ddns-scripts/files
 
 #修改cloudflared
-sed -i 's/2023.2.2/2023.7.3/g' openwrt/feeds/packages/net/cloudflared/Makefile
-sed -i 's/b0abaff125d29c517894f6ea74dcc7044c92500670463595ba9ff4950a1d2fc2/772ddcb721f5b479192117d1156b1091505721aa81d6bab3de9577176b930191/g' openwrt/feeds/packages/net/cloudflared/Makefile
+sed -i 's/2023.2.2/2023.10.0/g' openwrt/feeds/packages/net/cloudflared/Makefile
+sed -i 's/b0abaff125d29c517894f6ea74dcc7044c92500670463595ba9ff4950a1d2fc2/2d2df4dd4992eef485f7ffebc0a1e9e6292b42ca42341f2e46224f17155e9532/g' openwrt/feeds/packages/net/cloudflared/Makefile
+#sed -i 's/2023.2.2/2023.7.3/g' openwrt/feeds/packages/net/cloudflared/Makefile
+#sed -i 's/b0abaff125d29c517894f6ea74dcc7044c92500670463595ba9ff4950a1d2fc2/772ddcb721f5b479192117d1156b1091505721aa81d6bab3de9577176b930191/g' openwrt/feeds/packages/net/cloudflared/Makefile
 sed -i '/init.d/d' openwrt/feeds/packages/net/cloudflared/Makefile
 rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
 sed -i '/cloudflared.config $(1)/d' openwrt/feeds/packages/net/cloudflared/Makefile
