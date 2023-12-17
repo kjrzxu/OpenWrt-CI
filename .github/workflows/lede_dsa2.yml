@@ -26,18 +26,7 @@ jobs:
 
     steps:
       - name: 准备工作
-        uses: actions/checkout@v2
-        with:
-          ref: main
-          fetch-depth: 0
-          
-      - name: cache
-        uses: klever1988/cachewrtbuild@main
-        with:
-          ccache: true
-          toolchain: true
-          skip: true
-          clean: false
+        uses: actions/checkout@v3
           
       - name: 部署编译环境
         run: |
@@ -154,7 +143,7 @@ jobs:
           echo -e "$(nproc) thread ../files."
           make -j$(($(nproc) + 1)) V=s
       - name : 上传bin文件夹(固件+ipk)到 github actions
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: OpenWrt_LEDE_dsa2
           path: openwrt/bin
