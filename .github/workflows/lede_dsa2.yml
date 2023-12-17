@@ -47,6 +47,7 @@ jobs:
           cd openwrt
           echo "src-git package https://github.com/kjrzxu/package.git" >> ./feeds.conf.default
           echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
+          #echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
       - name: 编译5.10内核
         run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
       - name: 升级feeds
@@ -97,9 +98,7 @@ jobs:
           sed -i 's#_("Backup / Flash Firmware"#_("备份升级"#' openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
           sed -i 's/_("Reboot"/_("系统重启"/' openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
           # 修改插件名称并调整顺序
-          sed -i 's/_("ShadowSocksR Plus+"/_("科学上网"/' openwrt/feeds/helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
-          #sed -i '101s/x86_64/x86_64||mipsel/' openwrt/feeds/helloworld/luci-app-ssr-plus/Makefile
-          #sed -i '161s/n/y/' openwrt/feeds/helloworld/luci-app-ssr-plus/Makefile
+          #sed -i 's/_("ShadowSocksR Plus+"/_("科学上网"/' openwrt/feeds/helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
           sed -i 's/_("OpenClash"/_("科学上网"/' openwrt/feeds/openclash/luci-app-openclash/luasrc/controller/openclash.lua
           sed -i 's/_("Internet Access Schedule Control"/_("时间控制"/' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
           sed -i 's/"services"/"control"/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
@@ -125,7 +124,6 @@ jobs:
           sed -i 's/"TTYD Terminal"), 10/"命令终端"), 55/' openwrt/feeds/luci/applications/luci-app-ttyd/luasrc/controller/terminal.lua
           sed -i 's/"Turbo ACC Center"), 101/"网络加速"), 101/' openwrt/feeds/luci/applications/luci-app-turboacc/luasrc/controller/turboacc.lua
           sed -i 's/_("udpxy")/_("IPTV单播"), 99/' openwrt/feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
-          #sed -i 's/"services"/"iptv"/g' openwrt/feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
           sed -i 's/_("uHTTPd")/_("WEB 管理"), 102/' openwrt/feeds/luci/applications/luci-app-uhttpd/luasrc/controller/uhttpd/uhttpd.lua
           sed -i 's/_("Unblock Netease Music"), 50/_("网易歌曲"), 50/' openwrt/feeds/luci/applications/luci-app-unblockmusic/luasrc/controller/unblockmusic.lua
           sed -i 's/_("UPnP")/_("UPnP转发"), 101/' openwrt/feeds/luci/applications/luci-app-upnp/luasrc/controller/upnp.lua
