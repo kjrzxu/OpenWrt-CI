@@ -34,10 +34,10 @@ jobs:
       - name: cache
         uses: klever1988/cachewrtbuild@main
         with:
-          ccache: 'true'
-          toolchain: 'true'
-          skip: 'true'
-          clean: 'false'
+          ccache: true
+          toolchain: true
+          skip: true
+          clean: false
           
       - name: 部署编译环境
         run: |
