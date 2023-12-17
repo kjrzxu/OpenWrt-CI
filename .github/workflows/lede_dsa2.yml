@@ -76,10 +76,6 @@ jobs:
         run: |
           rm -rf openwrt/feeds/packages/net/msd_lite
           git clone https://github.com/kjrzxu/msd_lite.git openwrt/feeds/packages/net/msd_lite
-      - name: 更改插件名称
-        run: |
-          rm -rf openwrt/feeds/packages/net/msd_lite
-          git clone https://github.com/kjrzxu/msd_lite.git openwrt/feeds/packages/net/msd_lite
           
       - name: 生成config内核编译
         run: |
