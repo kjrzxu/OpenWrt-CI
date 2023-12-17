@@ -126,7 +126,6 @@ jobs:
           CONFIG_PACKAGE_luci-app-zerotier=y
           EOF
           make defconfig
-          echo -e 'CONFIG_DEVEL=y\nCONFIG_CCACHE=y' >> .config; make defconfig
       - name: 下载软件包
         run: |
           cd openwrt
