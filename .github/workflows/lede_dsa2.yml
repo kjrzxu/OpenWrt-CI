@@ -27,7 +27,14 @@ jobs:
     steps:
       - name: 准备工作
         uses: actions/checkout@v3
-
+        with:
+          fetch-depth: 0
+          
+      - name: cache
+        uses: klever1988/cachewrtbuild@main
+        with:
+          ccache: 'true'
+          
       - name: 部署编译环境
         run: |
           sudo apt update -y
@@ -80,6 +87,7 @@ jobs:
       - name: 生成config内核编译
         run: |
           cd openwrt
+          rm -rf ./tmp && rm -rf ./.config
           touch ./.config
           # 机型设置:
           cat >> .config <<EOF
