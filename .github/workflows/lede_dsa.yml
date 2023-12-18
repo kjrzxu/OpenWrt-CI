@@ -68,6 +68,7 @@ jobs:
           # 修改cloudflared
           sed -i 's/2023.2.2/2023.10.0/g' openwrt/feeds/packages/net/cloudflared/Makefile
           sed -i 's/b0abaff125d29c517894f6ea74dcc7044c92500670463595ba9ff4950a1d2fc2/2d2df4dd4992eef485f7ffebc0a1e9e6292b42ca42341f2e46224f17155e9532/g' openwrt/feeds/packages/net/cloudflared/Makefile
+          sed -i 's/PKG_USE_MIPS16:=0/PKG_BUILD_FLAGS:=no-mips16/g' openwrt/feeds/packages/net/cloudflared/Makefile
           sed -i '/init.d/d' openwrt/feeds/packages/net/cloudflared/Makefile
           sed -i '/cloudflared.config $(1)/d' openwrt/feeds/packages/net/cloudflared/Makefile
           rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
@@ -150,7 +151,7 @@ jobs:
           CONFIG_PACKAGE_ipv6helper=y
           CONFIG_PACKAGE_autosamba=y
           CONFIG_PACKAGE_automount=y
-          #CONFIG_PACKAGE_cloudflared=y
+          CONFIG_PACKAGE_cloudflared=y
           CONFIG_PACKAGE_msd_lite=y
           CONFIG_PACKAGE_ddns-scripts_cloudflare.com-v4=y
           CONFIG_PACKAGE_xupnpd=y
@@ -161,7 +162,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-advanced=y
           CONFIG_PACKAGE_luci-app-arpbind=y
           CONFIG_PACKAGE_luci-app-autoreboot=y
-          #CONFIG_PACKAGE_luci-app-cloudflared=y
+          CONFIG_PACKAGE_luci-app-cloudflared=y
           CONFIG_PACKAGE_luci-app-control-speedlimit=y
           CONFIG_PACKAGE_luci-app-control-weburl=y
           CONFIG_PACKAGE_luci-app-ddns=y
