@@ -71,6 +71,8 @@ jobs:
           sed -i 's/"services"/"control"/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
           sed -i 's/services/control/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/view/mia/mia_status.htm
           # 修改cloudflared冲突设置
+          sed -i 's/GO_VERSION_MAJOR_MINOR:=1.21/GO_VERSION_MAJOR_MINOR:=1.20/g' openwrt/feeds/packages/lang/golang/golang/Makefile
+          sed -i 's/GO_VERSION_PATCH:=5/GO_VERSION_PATCH:=7/g' openwrt/feeds/packages/lang/golang/golang/Makefile
           sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
           sed -i '/cloudflared.config $/d' openwrt/feeds/packages/net/cloudflared/Makefile
           rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
@@ -119,7 +121,7 @@ jobs:
           CONFIG_PACKAGE_ipv6helper=y
           CONFIG_PACKAGE_autosamba=y
           CONFIG_PACKAGE_automount=y
-          #CONFIG_PACKAGE_cloudflared=y
+          CONFIG_PACKAGE_cloudflared=y
           CONFIG_PACKAGE_msd_lite=y
           CONFIG_PACKAGE_ddns-scripts-cloudflare=y
           CONFIG_PACKAGE_xupnpd=y
