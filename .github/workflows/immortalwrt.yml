@@ -51,7 +51,7 @@ jobs:
         run: |
           # 删除冲突和多余插件
           rm -rf openwrt/feeds/luci/applications/luci-app-fileassistant
-          rm -rf openwrt/feeds/luci/applications/luci-app-passwall
+          #rm -rf openwrt/feeds/luci/applications/luci-app-passwall
           rm -rf openwrt/feeds/luci/applications/luci-app-ssr-plus
           # 修改主题
           rm -rf openwrt/feeds/luci/themes/luci-theme-argon
@@ -71,8 +71,8 @@ jobs:
           sed -i 's/"services"/"control"/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
           sed -i 's/services/control/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/view/mia/mia_status.htm
           # 修改cloudflared冲突设置
-          sed -i 's/GO_VERSION_MAJOR_MINOR:=1.21/GO_VERSION_MAJOR_MINOR:=1.20/g' openwrt/feeds/packages/lang/golang/golang/Makefile
-          sed -i 's/GO_VERSION_PATCH:=5/GO_VERSION_PATCH:=7/g' openwrt/feeds/packages/lang/golang/golang/Makefile
+          #sed -i 's/GO_VERSION_MAJOR_MINOR:=1.21/GO_VERSION_MAJOR_MINOR:=1.20/g' openwrt/feeds/packages/lang/golang/golang/Makefile
+          #sed -i 's/GO_VERSION_PATCH:=5/GO_VERSION_PATCH:=7/g' openwrt/feeds/packages/lang/golang/golang/Makefile
           sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
           sed -i '/cloudflared.config $/d' openwrt/feeds/packages/net/cloudflared/Makefile
           rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
@@ -88,6 +88,7 @@ jobs:
           find openwrt/feeds -path '*/zh_Hans/base.po' -exec sed -i '7476s/msgstr "重启"/msgstr "系统重启"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "备份与升级"/msgstr "备份升级"/' {} \;
           find openwrt/feeds -path '*/zh-cn/*.po' -exec sed -i 's/msgstr "OpenClash"/msgstr "科学上网"/' {} \;
+          find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "PassWall"/msgstr "科学上网"/' {} \;
           find openwrt/feeds -path '*/controller/*.lua' -exec sed -i 's#"IP/MAC Binding"), 45#"MAC绑定"), 65#' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "上网时间控制"/msgstr "时间控制"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "广告屏蔽大师 Plus+"/msgstr "广告屏蔽"/' {} \;
@@ -121,7 +122,7 @@ jobs:
           CONFIG_PACKAGE_ipv6helper=y
           CONFIG_PACKAGE_autosamba=y
           CONFIG_PACKAGE_automount=y
-          CONFIG_PACKAGE_cloudflared=y
+          #CONFIG_PACKAGE_cloudflared=y
           CONFIG_PACKAGE_msd_lite=y
           CONFIG_PACKAGE_ddns-scripts-cloudflare=y
           CONFIG_PACKAGE_xupnpd=y
@@ -138,6 +139,9 @@ jobs:
           CONFIG_PACKAGE_luci-app-ddns=y
           CONFIG_PACKAGE_luci-app-diskman=y
           CONFIG_PACKAGE_luci-app-easymesh=y
+          CONFIG_PACKAGE_luci-app-o
+          CONFIG_PACKAGE_luci-app-ope
+          CONFIG_PACKAGE_luci-app-eqos=y
           CONFIG_PACKAGE_luci-app-fileassistant=y
           CONFIG_PACKAGE_luci-app-frpc=y
           CONFIG_PACKAGE_luci-app-hd-idle=y
@@ -145,7 +149,8 @@ jobs:
           CONFIG_PACKAGE_luci-app-mwan3=y
           CONFIG_PACKAGE_luci-app-nlbwmon=y
           #CONFIG_PACKAGE_luci-app-omcproxy=y
-          CONFIG_PACKAGE_luci-app-openclash=y
+          #CONFIG_PACKAGE_luci-app-openclash=y
+          CONFIG_PACKAGE_luci-app-passwall=y
           CONFIG_PACKAGE_luci-app-ramfree=y
           CONFIG_PACKAGE_luci-app-socat=y
           CONFIG_PACKAGE_luci-app-syncdial=y
