@@ -72,10 +72,10 @@ jobs:
           sed -i 's/GO_VERSION_MAJOR_MINOR:=1.21/GO_VERSION_MAJOR_MINOR:=1.20/g' openwrt/feeds/packages/lang/golang/golang/Makefile
           sed -i 's/GO_VERSION_PATCH:=5/GO_VERSION_PATCH:=7/g' openwrt/feeds/packages/lang/golang/golang/Makefile
           sed -i 's/285cbbdf4b6e6e62ed58f370f3f6d8c30825d6e56c5853c66d3c23bcdb09db19/2c5ee9c9ec1e733b0dbbc2bdfed3f62306e51d8172bf38f4f4e542b27520f597/g' openwrt/feeds/packages/lang/golang/golang/Makefile
-          sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
-          sed -i '/cloudflared.config $/d' openwrt/feeds/packages/net/cloudflared/Makefile
-          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
-          rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.config
+          #sed -i '/cloudflared.init $/d' openwrt/feeds/packages/net/cloudflared/Makefile
+          #sed -i '/cloudflared.config $/d' openwrt/feeds/packages/net/cloudflared/Makefile
+          #rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
+          #rm openwrt/feeds/packages/net/cloudflared/files/cloudflared.config
           # 更改ImmortalWrt为OpenWrt
           find openwrt/package -name '99*-chinese' -exec sed -i '/timezone/i\		set system.@system[0].hostname="OpenWrt"' {} \;
           find openwrt/package -name '99*-chinese' -exec sed -i "/downloads/a\sed -i 's/ImmortalWrt/OpenWrt/' /lib/wifi/mac80211.sh" {} \;
