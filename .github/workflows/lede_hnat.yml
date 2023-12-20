@@ -1,4 +1,4 @@
-﻿#
+#
 # This is free software, lisence use MIT.
 # 
 # Copyright (C) 2019 P3TERX <https://p3terx.com>
@@ -48,7 +48,7 @@ jobs:
           cd openwrt
           echo "src-git package https://github.com/kjrzxu/package.git" >> ./feeds.conf.default
           echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
-#          echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
+          echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
 #      - name: 更改5.10内核
 #        run: sed -i '/USE_ELF_REL=y/a CONFIG_MT753X_GSW=y' openwrt/target/linux/ramips/mt7621/config-5.10
       - name: 替换hnat驱动，替换ramips
