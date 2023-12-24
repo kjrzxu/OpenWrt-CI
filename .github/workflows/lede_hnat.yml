@@ -49,6 +49,7 @@ jobs:
           echo "src-git package https://github.com/kjrzxu/package.git" >> ./feeds.conf.default
           echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
           echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
+          echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git" >> ./feeds.conf.default
 #      - name: 更改5.10内核
 #        run: sed -i '/USE_ELF_REL=y/a CONFIG_MT753X_GSW=y' openwrt/target/linux/ramips/mt7621/config-5.10
       - name: 替换hnat驱动，替换ramips
@@ -186,9 +187,10 @@ jobs:
           CONFIG_PACKAGE_luci-app-nlbwmon=y
           #CONFIG_PACKAGE_luci-app-omcproxy=y
           CONFIG_PACKAGE_luci-app-openclash=y
+          #CONFIG_PACKAGE_luci-app-passwall=y
           CONFIG_PACKAGE_luci-app-ramfree=y
           CONFIG_PACKAGE_luci-app-socat=y
-          #CONFIG_PACKAGE_luci-app-ssr-plus=y
+          CONFIG_PACKAGE_luci-app-ssr-plus=n
           #CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=y
           #CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan=y
           CONFIG_PACKAGE_luci-app-syncdial=y
