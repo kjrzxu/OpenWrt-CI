@@ -119,7 +119,7 @@ jobs:
           CONFIG_PACKAGE_ipv6helper=y
           CONFIG_PACKAGE_autosamba=y
           CONFIG_PACKAGE_automount=y
-          #CONFIG_PACKAGE_cloudflared=y
+          CONFIG_PACKAGE_cloudflared=y
           CONFIG_PACKAGE_msd_lite=y
           CONFIG_PACKAGE_ddns-scripts-cloudflare=y
           CONFIG_PACKAGE_xupnpd=y
@@ -136,7 +136,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-ddns=y
           CONFIG_PACKAGE_luci-app-diskman=y
           CONFIG_PACKAGE_luci-app-easymesh=y
-          CONFIG_PACKAGE_luci-app-eqos=y
+          #CONFIG_PACKAGE_luci-app-eqos=y
           CONFIG_PACKAGE_luci-app-fileassistant=y
           CONFIG_PACKAGE_luci-app-frpc=y
           CONFIG_PACKAGE_luci-app-hd-idle=y
