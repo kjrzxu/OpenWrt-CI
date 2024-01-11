@@ -100,7 +100,7 @@ jobs:
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "FTP 服务器"/msgstr "FTP 服务"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "MultiWAN 管理器"/msgstr "负载均衡"/' {} \;
           find openwrt/feeds -path '*/zh_Hans/*.po' -exec sed -i 's/msgstr "udpxy"/msgstr "IPTV单播"/' {} \;
-          find openwrt/feeds -path '*/menu.d/*-ttyd.json' -exec sed -i "3/a\		"order": 40,/' {} \;
+          #find openwrt/feeds -path '*/menu.d/*-ttyd.json' -exec sed -i "3/a\		"order": 40,/' {} \;
 
       - name: 配置config文件
         run: |
