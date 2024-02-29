@@ -49,8 +49,6 @@ jobs:
           echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
           echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
           echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git" >> ./feeds.conf.default
-      - name: 编译5.10内核
-        run: sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/' openwrt/target/linux/ramips/Makefile
       - name: 升级feeds
         run: cd openwrt && ./scripts/feeds update -a
       - name: 安装feeds
