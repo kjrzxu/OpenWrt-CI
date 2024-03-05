@@ -60,9 +60,9 @@ jobs:
         run: |
           # 替换原argon主题和argon-config主题设置
           rm -rf openwrt/feeds/luci/themes/luci-theme-argon
-          rm -rf openwrt/feeds/luci/applications/luci-app-argon-config
+          #rm -rf openwrt/feeds/luci/applications/luci-app-argon-config
           git clone -b 18.06 https://github.com/kjrzxu/luci-theme-argon.git openwrt/feeds/luci/themes/luci-theme-argon
-          git clone -b 18.06 https://github.com/kjrzxu/luci-app-argon-config.git openwrt/feeds/luci/applications/luci-app-argon-config
+          #git clone -b 18.06 https://github.com/kjrzxu/luci-app-argon-config.git openwrt/feeds/luci/applications/luci-app-argon-config
           # 替换update_cloudflare_com_v4.sh
           rm -rf openwrt/feeds/packages/net/ddns-scripts/files/update_cloudflare_com_v4.sh
           cp files/update_cloudflare_com_v4.sh openwrt/feeds/packages/net/ddns-scripts/files
