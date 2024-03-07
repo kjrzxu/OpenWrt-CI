@@ -102,8 +102,24 @@
 };
 
 &gsw {
-	mediatek,portmap = "wllll";
+	mediatek,mdio = <&mdio>;
+	mediatek,mdio_master_pinmux = <0>;
+	reset-gpios = <&pio 39 0>;
+	interrupt-parent = <&pio>;
+	interrupts = <38 IRQ_TYPE_LEVEL_HIGH>;
 	status = "okay";
+
+	port6: port@6 {
+		compatible = "mediatek,mt753x-port";
+		mediatek,ssc-on;
+		reg = <6>;
+		phy-mode = "sgmii";
+
+		fixed-link {
+			speed = <2500>;
+			full-duplex;
+		};
+	};
 };
 
 &hnat {
