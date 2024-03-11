@@ -43,11 +43,6 @@ jobs:
       - name: 下载源码
         run: |
           git clone https://github.com/coolsnowwolf/lede openwrt
-          git clone https://github.com/kjrzxu/package openwrt/package/package
-          git clone https://github.com/vernesong/OpenClash openwrt/package/openclash
-          git clone https://github.com/lmq8267/luci-app-cloudflared openwrt/package/cloudflared
-          rm -rf openwrt/package/package/luci-app-cloudflared
-
       - name: 升级feeds
         run: cd openwrt && ./scripts/feeds update -a
       - name: 安装feeds
@@ -55,6 +50,11 @@ jobs:
         
       - name: 替换和修改插件
         run: |
+          # 添加插件
+          git clone https://github.com/kjrzxu/package openwrt/package/package
+          git clone https://github.com/vernesong/OpenClash openwrt/package/OpenClash
+          git clone https://github.com/lmq8267/luci-app-cloudflared openwrt/package/cloudflared
+          rm -rf openwrt/package/package/luci-app-cloudflared
           # 替换原argon主题
           rm -rf openwrt/feeds/luci/themes/luci-theme-argon
           git clone -b 18.06 https://github.com/kjrzxu/luci-theme-argon.git openwrt/feeds/luci/themes/luci-theme-argon
