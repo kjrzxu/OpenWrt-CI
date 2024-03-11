@@ -85,7 +85,7 @@ jobs:
           sed -i 's#_("Backup / Flash Firmware"#_("备份升级"#' openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
           sed -i 's/_("Reboot"/_("系统重启"/' openwrt/feeds/luci/modules/luci-mod-admin-full/luasrc/controller/admin/system.lua
           # 修改插件名称并调整顺序
-          sed -i 's/_("OpenClash"/_("科学上网"/' openwrt/feeds/openclash/luci-app-openclash/luasrc/controller/openclash.lua
+          sed -i 's/_("OpenClash"/_("科学上网"/' openwrt/package/OpenClash/luci-app-openclash/luasrc/controller/openclash.lua
           sed -i 's/_("Internet Access Schedule Control"/_("时间控制"/' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/controller/mia.lua
           sed -i 's/services/control/g' openwrt/feeds/luci/applications/luci-app-accesscontrol/luasrc/view/mia/mia_status.htm
           sed -i 's/_("ADBYBY Plus +"/_("广告屏蔽"/' openwrt/feeds/luci/applications/luci-app-adbyby-plus/luasrc/controller/adbyby.lua
