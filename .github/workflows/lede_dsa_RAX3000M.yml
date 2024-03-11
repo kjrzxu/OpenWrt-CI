@@ -64,9 +64,10 @@ jobs:
           # 修改cloudflared
           sed -i 's/2023.2.2/2024.2.1/g' openwrt/feeds/packages/net/cloudflared/Makefile
           sed -i 's/b0abaff125d29c517894f6ea74dcc7044c92500670463595ba9ff4950a1d2fc2/c4a741ee532b8544a65a598e739e002ec04cfffb202119e3e2315e9ecc7dc07a/g' openwrt/feeds/packages/net/cloudflared/Makefile
-          # 替换原msd_lite
-          rm -rf openwrt/feeds/packages/net/msd_lite
-          git clone https://github.com/kjrzxu/msd_lite.git openwrt/feeds/packages/net/msd_lite
+          sed -i '/init.d/d' openwrt/feeds/packages/net/cloudflared/Makefile
+          sed -i '/cloudflared.config $(1)/d' openwrt/feeds/packages/net/cloudflared/Makefile
+          rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
+          rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.config
           # 修改autosamba共享0777权限
           sed -i 's/0666/0777/' openwrt/package/lean/autosamba/files/20-smb
           # 修改硬盘休眠配置文件
