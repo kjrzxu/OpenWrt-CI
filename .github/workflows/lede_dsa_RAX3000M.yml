@@ -57,10 +57,10 @@ jobs:
           cp -r files/luci-app-cloudflared openwrt/feeds/luci
           cp -r files/luci-app-fileassistant openwrt/feeds/luci
           cp -r files/luci-app-msd_lite openwrt/feeds/luci
-          # 替换原argon主题
+          # 替换argon主题
           rm -rf openwrt/feeds/luci/themes/luci-theme-argon
           cp -r files/luci-theme-argon openwrt/feeds/luci/themes
-          # 替换原msd_lite
+          # 替换msd_lite
           rm -rf openwrt/feeds/packages/net/msd_lite
           cp -r files/msd_lite openwrt/feeds/packages/net
           # 替换update_cloudflare_com_v4.sh
