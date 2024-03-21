@@ -1,6 +1,6 @@
 {
 	"admin/quickstart/*": {
-		"title": "Dashboard",
+		"title": "QuickStart",
 		"order": 1,
 		"action": {
 			"type": "template",

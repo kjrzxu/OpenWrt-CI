@@ -3,16 +3,16 @@ local http = require "luci.http"
 module("luci.controller.quickstart", package.seeall)
 
 function index()
-	entry({"admin", "nas"}, firstchild(), _("NAS") , 45).dependent = false
     if luci.sys.call("pgrep quickstart >/dev/null") == 0 then
-        entry({"admin", "quickstart"}, template("quickstart/home"), _("Dashboard"), 1).leaf = true
+        entry({"admin", "quickstart"}, template("quickstart/home"), _("QuickStart"), 1).leaf = true
+        entry({"admin", "network_guide"}, call("networkguide_index"), _("NetworkGuide"), 2)
+        entry({"admin", "network_guide", "pages"}, call("quickstart_index", {index={"admin", "network_guide", "pages"}})).leaf = true
         if nixio.fs.access("/usr/lib/lua/luci/view/quickstart/main_dev.htm") then
             entry({"admin", "quickstart_dev"}, call("quickstart_dev", {index={"admin", "quickstart_dev"}})).leaf = true
         end
-        entry({"admin", "nas", "smart"}, call("quickstart_index", {index={"admin", "nas"}}), _("S.M.A.R.T"), 11).leaf = true
-        entry({"admin", "network", "network_guide"}, call("networkguide_index"), _("Network Guide"), 10)
-        entry({"admin", "network", "network_guide", "pages"}, call("quickstart_index", {index={"admin", "network", "network_guide", "pages"}})).leaf = true
-        entry({"admin", "network", "interfaceconfig"}, call("quickstart_index", {index={"admin", "network"}}), _("Network Port"), 11).leaf = true
+        entry({"admin", "nas", "raid"}, call("quickstart_index", {index={"admin", "nas"}}), _("RAID"), 10).leaf = true
+        entry({"admin", "nas", "smart"}, call("quickstart_index", {index={"admin", "nas"}}), _("S.M.A.R.T."), 11).leaf = true
+        entry({"admin", "network", "interfaceconfig"}, call("quickstart_index", {index={"admin", "network"}}), _("NetworkPort"), 50).leaf = true
 
         entry({"admin", "nas", "quickstart"}).dependent = false
         entry({"admin", "nas", "quickstart", "auto_setup"}, post("auto_setup"))
@@ -23,7 +23,7 @@ function index()
 end
 
 function networkguide_index()
-    luci.http.redirect(luci.dispatcher.build_url("admin", "network", "network_guide", "pages", "network"))
+    luci.http.redirect(luci.dispatcher.build_url("admin", "network_guide", "pages", "network"))
 end
 
 function redirect_fallback()

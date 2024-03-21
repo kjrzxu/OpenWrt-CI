@@ -5,13 +5,13 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=luci-app-quickstart
-PKG_VERSION:=1.0.2-20230817
-PKG_MAINTAINER:=istoreos
-
-LUCI_TITLE:=LuCI support for Quickstart
-LUCI_DEPENDS:=+quickstart +luci-app-nlbwmon
+LUCI_TITLE:=LuCI support for quickstart 
+LUCI_DEPENDS:=+quickstart +luci-app-store
 LUCI_PKGARCH:=all
+
+PKG_VERSION:=0.8.3-3
+# PKG_RELEASE MUST be empty for luci.mk
+PKG_RELEASE:=
 
 LUCI_MINIFY_CSS:=0
 LUCI_MINIFY_JS:=0
@@ -19,3 +19,4 @@ LUCI_MINIFY_JS:=0
 include $(TOPDIR)/feeds/luci/luci.mk
 
 # call BuildPackage - OpenWrt buildroot signature
+
