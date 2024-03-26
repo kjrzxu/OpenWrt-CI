@@ -1,5 +1,5 @@
 
-a=Map("cloudflared",translate("Cloudflared"),translate("Cloudflare的隧道客户端 - 以前称为 Argo Tunnel ，免费的内网穿透，实现内网服务的外网访问"))
+a=Map("cloudflared",translate("Cloudflared-Cloudflared"),translate("Cloudflare的隧道客户端 - 以前称为 Argo Tunnel ，免费的内网穿透，实现内网服务的外网访问"))
 a:section(SimpleSection).template  = "cloudflared/cloudflared_status"
 
 t=a:section(NamedSection,"config","cloudflared")
