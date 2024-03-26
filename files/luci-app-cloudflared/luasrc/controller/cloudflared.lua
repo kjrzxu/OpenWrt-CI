@@ -5,14 +5,12 @@ function index()
 return
 end
 
-entry({"admin","vpn"}, firstchild(), "VPN", 49).dependent = false
+entry({"admin", "services", "cloudflared"},firstchild(), _("Cloudflared"), 110).dependent = false
 
-entry({"admin", "vpn", "cloudflared"},firstchild(), _("Cloudflared")).dependent = false
+entry({"admin", "services", "cloudflared", "general"},cbi("cloudflared/settings"), _("配置"), 1)
+entry({"admin", "services", "cloudflared", "log"},form("cloudflared/info"), _("日志"), 2)
 
-entry({"admin", "vpn", "cloudflared", "general"},cbi("cloudflared/settings"), _("配置"), 1)
-entry({"admin", "vpn", "cloudflared", "log"},form("cloudflared/info"), _("日志"), 2)
-
-entry({"admin","vpn","cloudflared","status"},call("act_status"))
+entry({"admin","services","cloudflared","status"},call("act_status"))
 end
 
 function act_status()
