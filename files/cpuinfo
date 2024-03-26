@@ -34,7 +34,7 @@ else
 	if grep -q "filogic" "/etc/openwrt_release"; then
 		wifi_temp0="$(awk '{ printf("%.1f°C", $0 / 1000) }' /sys/class/ieee80211/phy0/hwmon1/temp1_input)"
 		wifi_temp1="$(awk '{ printf("%.1f°C", $0 / 1000) }' /sys/class/ieee80211/phy1/hwmon2/temp1_input)"
-		echo -n "${cpu_arch} x ${cpu_cores} (CPU:${cpu_temp}, wifi-2.4G:${wifi_temp0}, wifi-5G:${wifi_temp1})"
+		echo -n "${cpu_arch} x ${cpu_cores} (CPU:${cpu_temp}, WIFI-2.4G:${wifi_temp0}, WIFI-5G:${wifi_temp1})"
 	else
 		echo -n "${cpu_arch} x ${cpu_cores} (${big_cpu_freq}${cpu_freq}, ${cpu_temp})"
 	fi
