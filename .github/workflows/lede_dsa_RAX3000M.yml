@@ -67,8 +67,8 @@ jobs:
           rm -rf openwrt/feeds/packages/net/ddns-scripts/files/update_cloudflare_com_v4.sh
           cp files/update_cloudflare_com_v4.sh openwrt/feeds/packages/net/ddns-scripts/files
           # 修改cloudflared
-          sed -i 's/2023.2.2/2024.2.1/g' openwrt/feeds/packages/net/cloudflared/Makefile
-          sed -i 's/b0abaff125d29c517894f6ea74dcc7044c92500670463595ba9ff4950a1d2fc2/c4a741ee532b8544a65a598e739e002ec04cfffb202119e3e2315e9ecc7dc07a/g' openwrt/feeds/packages/net/cloudflared/Makefile
+          sed -i 's/2023.2.2/2024.3.0/g' openwrt/feeds/packages/net/cloudflared/Makefile
+          sed -i 's/b0abaff125d29c517894f6ea74dcc7044c92500670463595ba9ff4950a1d2fc2/6e5fda072d81b2d40208a0d244b44aaf607f26709711e157e23f44f812594e93/g' openwrt/feeds/packages/net/cloudflared/Makefile
           sed -i '/init.d/d' openwrt/feeds/packages/net/cloudflared/Makefile
           sed -i '/cloudflared.config $(1)/d' openwrt/feeds/packages/net/cloudflared/Makefile
           rm -rf openwrt/feeds/packages/net/cloudflared/files/cloudflared.init
